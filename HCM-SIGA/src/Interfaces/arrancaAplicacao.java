@@ -45,7 +45,7 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 707, 513);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(205, 133, 63));
+		contentPane.setBackground(new Color(70, 130, 180));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setLocation(findScreenCenter());
