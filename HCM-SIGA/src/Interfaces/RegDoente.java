@@ -205,7 +205,7 @@ public class RegDoente extends JFrame {
 		panel.add(btnRegistrar);
 
 		JButton button = new JButton("Registrar");
-		button.setBackground(new Color(255, 255, 153));
+		button.setBackground(new Color(255, 255, 102));
 		button.setBounds(26, 597, 115, 45);
 		panel.add(button);
 
