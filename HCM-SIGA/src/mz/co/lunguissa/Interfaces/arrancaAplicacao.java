@@ -1,9 +1,10 @@
-package Interfaces;
+package mz.co.lunguissa.Interfaces;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Point;
 import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,13 +13,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JProgressBar;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.Font;
 import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.swing.ImageIcon;
-import Testes.runTeste;
+
+import mz.co.lunguissa.Testes.runTeste;
+
 import java.awt.Window.Type;
 import java.io.IOException;
 

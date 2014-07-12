@@ -1,4 +1,4 @@
-package Interfaces;
+package mz.co.lunguissa.Interfaces;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
