@@ -57,8 +57,8 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 		setContentPane(contentPane);
 		setLocation(findScreenCenter());
 		progressBar = new JProgressBar();
-		progressBar.setForeground(new Color(0, 204, 0));
-		progressBar.setIndeterminate(true);
+		progressBar.setForeground(new Color(70, 130, 180));
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setForeground(new Color(0, 102, 153));
 		lblNewLabel.setFont(new Font("Rockwell Condensed", Font.PLAIN, 30));

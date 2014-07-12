@@ -9,11 +9,17 @@ import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 import java.awt.Font;
+import javax.swing.JButton;
 
 public class RegMedicamentos extends JFrame {
 
@@ -39,6 +45,22 @@ public class RegMedicamentos extends JFrame {
 	 * Create the frame.
 	 */
 	public RegMedicamentos() {
+		
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 698, 574);
 		contentPane = new JPanel();
@@ -70,6 +92,10 @@ public class RegMedicamentos extends JFrame {
 		lblC.setFont(new Font("Consolas", Font.PLAIN, 20));
 		lblC.setBounds(30, 328, 231, 24);
 		panel_1.add(lblC);
+		
+		JButton btnTeste = new JButton("TESTE");
+		btnTeste.setBounds(65, 112, 89, 23);
+		panel_1.add(btnTeste);
 	}
 	private Point findScreenCenter() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
