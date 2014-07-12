@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Color;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JTextField;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
@@ -23,6 +24,9 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JRadioButton;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
 public class RegDoente extends JFrame {
 
@@ -32,28 +36,43 @@ public class RegDoente extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-
+	private ButtonGroup radioGroup;
 	/**
 	 * Create the frame.
 	 */
 	public RegDoente() {
+		
+		
+		try {
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
+		} catch (Exception e) {
+		    // If Nimbus is not available, you can set the GUI to another look and feel.
+		}
+		
 		setResizable(false);
 		setTitle("Tela Registro de Paciente");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 785, 689);
+		setBounds(100, 100, 789, 572);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
+		
+		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(205, 133, 63));
+		panel.setBackground(new Color(70, 130, 180));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 102));
-		panel_1.setBounds(26, 31, 719, 555);
+		panel_1.setBackground(new Color(255, 255, 255));
+		panel_1.setBounds(26, 31, 719, 420);
 		panel.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -70,7 +89,7 @@ public class RegDoente extends JFrame {
 		panel_1.add(lblNome);
 
 		textField = new JTextField();
-		textField.setBackground(new Color(255, 255, 204));
+		textField.setBackground(new Color(255, 255, 255));
 		textField.setText("Teste");
 		textField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField.setColumns(10);
@@ -78,7 +97,8 @@ public class RegDoente extends JFrame {
 		panel_1.add(textField);
 
 		textField_1 = new JTextField();
-		textField_1.setBackground(new Color(255, 255, 204));
+		textField_1.setEditable(false);
+		textField_1.setBackground(new Color(255, 255, 255));
 		textField_1.setText("Teste");
 		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_1.setColumns(10);
@@ -86,7 +106,7 @@ public class RegDoente extends JFrame {
 		panel_1.add(textField_1);
 
 		textField_2 = new JTextField();
-		textField_2.setBackground(new Color(255, 255, 204));
+		textField_2.setBackground(new Color(255, 255, 255));
 		textField_2.setText("Teste");
 		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_2.setColumns(10);
@@ -100,7 +120,7 @@ public class RegDoente extends JFrame {
 		panel_1.add(lblApelido);
 
 		textField_3 = new JTextField();
-		textField_3.setBackground(new Color(255, 255, 204));
+		textField_3.setBackground(new Color(255, 255, 255));
 		textField_3.setText("Teste");
 		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_3.setColumns(10);
@@ -114,7 +134,7 @@ public class RegDoente extends JFrame {
 		panel_1.add(lblIsencoes);
 
 		textField_4 = new JTextField();
-		textField_4.setBackground(new Color(255, 255, 204));
+		textField_4.setBackground(new Color(255, 255, 255));
 		textField_4.setText("Teste");
 		textField_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_4.setColumns(10);
@@ -145,26 +165,6 @@ public class RegDoente extends JFrame {
 		lblAnalisesPedidas.setBounds(35, 355, 252, 35);
 		panel_1.add(lblAnalisesPedidas);
 
-		JLabel lblComentariosDoMedico = new JLabel("Comentarios do Medico:");
-		lblComentariosDoMedico.setForeground(Color.BLACK);
-		lblComentariosDoMedico.setFont(new Font("Consolas", Font.PLAIN, 20));
-		lblComentariosDoMedico.setBounds(35, 427, 252, 35);
-		panel_1.add(lblComentariosDoMedico);
-
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane
-				.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane
-				.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(346, 397, 332, 114);
-		panel_1.add(scrollPane);
-
-		JTextPane txtpnTeste = new JTextPane();
-		txtpnTeste.setBackground(new Color(255, 255, 204));
-		txtpnTeste.setText("teste");
-		txtpnTeste.setFont(new Font("Consolas", Font.PLAIN, 16));
-		scrollPane.setViewportView(txtpnTeste);
-
 		JLabel lblIdade = new JLabel("Idade:");
 		lblIdade.setForeground(Color.BLACK);
 		lblIdade.setFont(new Font("Consolas", Font.PLAIN, 20));
@@ -177,13 +177,6 @@ public class RegDoente extends JFrame {
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		comboBox.setBounds(346, 143, 151, 32);
 		panel_1.add(comboBox);
-
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {
-				"Masculino", "Feminino" }));
-		comboBox_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		comboBox_1.setBounds(346, 186, 151, 32);
-		panel_1.add(comboBox_1);
 
 		JComboBox comboBox_2 = new JComboBox();
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {
@@ -198,20 +191,37 @@ public class RegDoente extends JFrame {
 		comboBox_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		comboBox_3.setBounds(346, 354, 151, 32);
 		panel_1.add(comboBox_3);
+		
+		
+		JRadioButton rdbtnMasculino = new JRadioButton("Masculino");
+		rdbtnMasculino.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		rdbtnMasculino.setBackground(new Color(255, 255, 255));
+		rdbtnMasculino.setBounds(345, 190, 109, 30);
+		panel_1.add(rdbtnMasculino);
+		
+		JRadioButton rdbtnFeminino = new JRadioButton("Feminino");
+		rdbtnFeminino.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		rdbtnFeminino.setBackground(new Color(255, 255, 255));
+		rdbtnFeminino.setBounds(473, 190, 109, 30);
+		panel_1.add(rdbtnFeminino);
+		
+		radioGroup = new ButtonGroup();
+		radioGroup.add(rdbtnFeminino);
+		radioGroup.add(rdbtnMasculino);
 
 		JButton btnRegistrar = new JButton("Limpar");
-		btnRegistrar.setBackground(new Color(255, 255, 102));
-		btnRegistrar.setBounds(151, 597, 115, 45);
+		btnRegistrar.setBackground(new Color(255, 255, 255));
+		btnRegistrar.setBounds(630, 474, 115, 45);
 		panel.add(btnRegistrar);
 
 		JButton button = new JButton("Registrar");
-		button.setBackground(new Color(255, 255, 102));
-		button.setBounds(26, 597, 115, 45);
+		button.setBackground(new Color(255, 255, 255));
+		button.setBounds(505, 474, 115, 45);
 		panel.add(button);
 
 		JLabel lblTelaDeRegistro = new JLabel("Tela de Registro de Pacientes");
-		lblTelaDeRegistro.setForeground(new Color(255, 255, 102));
-		lblTelaDeRegistro.setBackground(new Color(255, 255, 204));
+		lblTelaDeRegistro.setForeground(new Color(255, 255, 255));
+		lblTelaDeRegistro.setBackground(new Color(255, 255, 255));
 		lblTelaDeRegistro.setFont(new Font("Consolas", Font.PLAIN, 18));
 		lblTelaDeRegistro.setBounds(270, 0, 428, 33);
 		panel.add(lblTelaDeRegistro);
