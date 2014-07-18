@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HM_report" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="22f404c0-2a36-4a9f-af27-f4c6ea3bad5b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT [HCM-LUNGUISSA].[dbo].[DOENTE].[senha]
+      ,[HCM-LUNGUISSA].[dbo].[DOENTE].[nome]
+      ,[HCM-LUNGUISSA].[dbo].[DOENTE].[apelido]
+      ,[HCM-LUNGUISSA].[dbo].[IDADES].[intervalos]
+      ,[HCM-LUNGUISSA].[dbo].[DOENTE].[sexo]
+      ,[HCM-LUNGUISSA].[dbo].[ISENCOES].[isencoes]
+      ,[HCM-LUNGUISSA].[dbo].[DOENTE].[nr. recibo boletim]
+      ,[HCM-LUNGUISSA].[dbo].[DOENTE].[nr. recibo analises]
+      ,[HCM-LUNGUISSA].[dbo].[ANALISES].[analises]
+
+		FROM dbo.DOENTE inner join dbo.IDADES on dbo.DOENTE.idade=dbo.IDADES.intervalos_id
+			inner join dbo.ISENCOES on dbo.DOENTE.isencoes=dbo.ISENCOES.isencoes_id
+			inner join dbo.ANALISES on dbo.DOENTE.[analises pedidas]=dbo.ANALISES.analise_id]]>
+	</queryString>
+	<field name="senha" class="java.lang.Integer"/>
+	<field name="nome" class="java.lang.String"/>
+	<field name="apelido" class="java.lang.String"/>
+	<field name="intervalos" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="isencoes" class="java.lang.String"/>
+	<field name="nr. recibo boletim" class="java.lang.Integer"/>
+	<field name="nr. recibo analises" class="java.lang.String"/>
+	<field name="analises" class="java.lang.String"/>
+	<group name="senha">
+		<groupExpression><![CDATA[$F{senha}]]></groupExpression>
+	</group>
+	<group name="nome">
+		<groupExpression><![CDATA[$F{nome}]]></groupExpression>
+	</group>
+	<group name="apelido">
+		<groupExpression><![CDATA[$F{apelido}]]></groupExpression>
+	</group>
+	<group name="intervalos">
+		<groupExpression><![CDATA[$F{intervalos}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="64" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="64" forecolor="#FFFFFF" backcolor="#006699" uuid="06ec8411-5756-47d7-b6e5-9fd919e613a8"/>
+				<staticText>
+					<reportElement mode="Transparent" x="0" y="11" width="286" height="39" forecolor="#FFFFFF" uuid="419c23df-ee5c-41bc-bc70-00471611616e"/>
+					<textElement>
+						<font size="24"/>
+					</textElement>
+					<text><![CDATA[Reportagem de Pacientes]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="455" y="47" width="100" height="17" forecolor="#FFFFFF" uuid="4bde382a-63a5-46b5-99bc-73ce11255ec8"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="18" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="17" width="555" height="1" uuid="0b539bda-428b-4094-9073-bf96e73c1e06"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1aecd87e-9072-484c-a1f9-1bebd57f6883"/>
+				<staticText>
+					<reportElement x="40" y="0" width="54" height="20" forecolor="#006699" uuid="9a5c8f17-b33f-4e39-9270-669d838db94e"/>
+					<textElement textAlignment="Center">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nome]]></text>
+				</staticText>
+			</frame>
+			<staticText>
+				<reportElement x="0" y="0" width="40" height="20" forecolor="#006699" uuid="22f22b86-6114-4e11-bd8d-60f167a97d0c"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Senha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="94" y="0" width="53" height="20" forecolor="#006699" uuid="c587e6d1-c6f6-48e9-96d8-04292d3f61db"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apelido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="147" y="0" width="37" height="20" forecolor="#006699" uuid="0f9b2a3c-5c31-4264-912e-7a730dbdba23"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Idade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="29" height="20" forecolor="#006699" uuid="f1110bce-8a35-4bb4-a595-ae20c3cf50cc"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="0" width="73" height="20" forecolor="#006699" uuid="445a0727-01a1-478c-aee8-28bcc940a8b2"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Isenções]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="286" y="0" width="81" height="20" forecolor="#006699" uuid="e72a8b94-9cd1-4ce9-bb76-a48f46c2f996"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibo Boletim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="367" y="0" width="95" height="20" forecolor="#006699" uuid="6178b471-8d42-490c-9337-f5ae8285c9ab"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recibo analises]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="462" y="0" width="93" height="20" forecolor="#006699" uuid="3f6e2dc3-7854-42d8-9daf-c2284a5716a2"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Analises pedidas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="40" height="20" uuid="0a09458f-04ea-4ee3-950a-6014344d7e23"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{senha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="40" y="0" width="54" height="20" uuid="c9f89373-dd9a-487e-ad63-bf6b104e2a14"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="0" width="37" height="20" uuid="abb416fa-78cb-4f5c-abd1-e966da574daa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{intervalos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="184" y="0" width="29" height="20" uuid="6daf6f3b-43b4-49b4-908b-1310178c03b2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="0" width="95" height="20" uuid="b0b46efc-41d5-4683-960d-35652d750950"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nr. recibo analises}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="286" y="0" width="81" height="20" uuid="a424b2e0-fb0e-417f-be81-8da7472aede7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nr. recibo boletim}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="0" width="93" height="20" uuid="2114f6af-925a-4e58-8f7c-909b904545d5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{analises}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="0" width="73" height="20" uuid="13176225-0d4c-4b9d-8ceb-4147c0d6393d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{isencoes}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="30cfefd2-2687-41df-93b9-71104fb7e85b"/>
+			</line>
+			<textField>
+				<reportElement x="94" y="0" width="53" height="20" uuid="207e0460-151b-42e0-9cf8-be8e559d7aaa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{apelido}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="34" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="af8f5a54-41d6-4099-a254-e1b2632f6f66"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="24" backcolor="#E6E6E6" uuid="1b3b17d8-d323-41c8-9183-ed19e92bd9ad"/>
+			</frame>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="20" uuid="b42c84b9-7470-46c9-975f-ab49f898fd03"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="20" uuid="b0c9dd8d-21c6-4e44-b5c4-1f6aba33b370"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
