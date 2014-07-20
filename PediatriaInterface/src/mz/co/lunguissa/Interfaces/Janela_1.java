@@ -62,6 +62,7 @@ public class Janela_1 extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_1() {
+		setTitle("HCM");
 		setResizable(false);
 		
 		
