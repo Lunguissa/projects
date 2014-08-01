@@ -60,7 +60,7 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 		setLocation(findScreenCenter());
 		progressBar = new JProgressBar();
 		progressBar.setBounds(10, 440, 681, 33);
-		progressBar.setForeground(new Color(0, 0, 139));
+		progressBar.setForeground(new Color(0, 0, 51));
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBounds(221, 5, 0, 340);
@@ -70,11 +70,11 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 		JLabel lblSoft = new JLabel(" Carregando a aplicacao.  Aguarde .......");
 		lblSoft.setBounds(89, 387, 419, 53);
 		lblSoft.setBackground(new Color(255, 250, 205));
-		lblSoft.setForeground(new Color(0, 0, 139));
+		lblSoft.setForeground(new Color(0, 0, 51));
 		lblSoft.setFont(new Font("Rockwell Condensed", Font.PLAIN, 32));
 		lblDinamico = new JLabel("10%");
 		lblDinamico.setBounds(635, 395, 56, 34);
-		lblDinamico.setForeground(new Color(0, 0, 139));
+		lblDinamico.setForeground(new Color(0, 0, 51));
 		lblDinamico.setFont(new Font("Rockwell Condensed", Font.PLAIN, 28));
 		contentPane.setLayout(null);
 		
@@ -126,7 +126,7 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 			}
 		}
 		dispose();
-		new Janela_1().setVisible(true);
+		new Janela_Login().setVisible(true);
 	}
 	@Override
 	public void run() {
