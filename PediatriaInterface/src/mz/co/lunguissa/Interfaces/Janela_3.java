@@ -21,32 +21,35 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
+import mz.co.lunguissa.Funcionalidades.DateTextField;
 import mz.co.lunguissa.Funcionalidades.point;
+
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.JCheckBox;
 
 public class Janela_3 extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField;
-	private JTextField textField_5;
+	private JTextField txtTesteas;
+	private JTextField txtAgostinhoMavota;
+	private DateTextField textField_2;
+	private JTextField txtMaputo;
+	private JTextField txtMafalala;
+	private JTextField txtCeleste;
+	private JTextField txtMe;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField txtMasculino;
 	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_20;
-	private JTextField textField_21;
 
 	/**
 	 * Launch the application.
@@ -96,304 +99,351 @@ public class Janela_3 extends JFrame {
 		tabbedPane.setBounds(25, 130, 837, 556);
 		contentPane.add(tabbedPane);
 		
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
-		tabbedPane.addTab("Informação do Doente", null, panel, null);
+		JPanel panel_1 = new JPanel();
+		tabbedPane.addTab("Informação do Doente", null, panel_1, null);
+		panel_1.setLayout(null);
 		
-		JLabel label_5 = new JLabel("Senha:");
-		label_5.setForeground(Color.BLACK);
-		label_5.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_5.setBounds(99, 60, 85, 20);
-		panel.add(label_5);
+		JLabel lblNmeroDeProcesso = new JLabel("N\u00FAmero de Processo:");
+		lblNmeroDeProcesso.setForeground(Color.BLACK);
+		lblNmeroDeProcesso.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblNmeroDeProcesso.setBounds(69, 42, 283, 20);
+		panel_1.add(lblNmeroDeProcesso);
 		
-		textField = new JTextField();
-		textField.setText("Teste");
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField.setEnabled(false);
-		textField.setEditable(false);
-		textField.setColumns(10);
-		textField.setBackground(Color.WHITE);
-		textField.setBounds(360, 53, 216, 30);
-		panel.add(textField);
+		txtTesteas = new JTextField();
+		txtTesteas.setEditable(false);
+		txtTesteas.setEnabled(false);
+		txtTesteas.setText("97654");
+		txtTesteas.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtTesteas.setColumns(10);
+		txtTesteas.setBackground(Color.WHITE);
+		txtTesteas.setBounds(362, 35, 216, 30);
+		panel_1.add(txtTesteas);
 		
-		textField_5 = new JTextField();
-		textField_5.setText("Teste");
-		textField_5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_5.setEnabled(false);
-		textField_5.setEditable(false);
-		textField_5.setColumns(10);
-		textField_5.setBackground(Color.WHITE);
-		textField_5.setBounds(360, 94, 332, 30);
-		panel.add(textField_5);
+		txtAgostinhoMavota = new JTextField();
+		txtAgostinhoMavota.setEditable(false);
+		txtAgostinhoMavota.setEnabled(false);
+		txtAgostinhoMavota.setText("Agostinho Mavota");
+		txtAgostinhoMavota.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtAgostinhoMavota.setColumns(10);
+		txtAgostinhoMavota.setBackground(Color.WHITE);
+		txtAgostinhoMavota.setBounds(362, 76, 332, 30);
+		panel_1.add(txtAgostinhoMavota);
 		
-		textField_6 = new JTextField();
-		textField_6.setText("Teste");
-		textField_6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_6.setEnabled(false);
-		textField_6.setEditable(false);
-		textField_6.setColumns(10);
-		textField_6.setBackground(Color.WHITE);
-		textField_6.setBounds(360, 135, 332, 30);
-		panel.add(textField_6);
+		textField_2 = new DateTextField();
+		textField_2.setEnabled(false);
+		textField_2.repaint();
+		textField_2.setText("20/07/1991");
+		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_2.setColumns(10);
+		textField_2.setBackground(Color.WHITE);
+		textField_2.setBounds(362, 117, 216, 30);
+		panel_1.add(textField_2);
 		
-		JLabel label_6 = new JLabel("Apelido:");
-		label_6.setForeground(Color.BLACK);
-		label_6.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_6.setBounds(100, 131, 104, 35);
-		panel.add(label_6);
+		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
+		lblDataDeNascimento.setForeground(Color.BLACK);
+		lblDataDeNascimento.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblDataDeNascimento.setBounds(69, 117, 283, 35);
+		panel_1.add(lblDataDeNascimento);
 		
-		JLabel label_7 = new JLabel("Nome:");
-		label_7.setForeground(Color.BLACK);
-		label_7.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_7.setBounds(100, 99, 85, 20);
-		panel.add(label_7);
+		JLabel lblNomeDoDoente = new JLabel("Nome do Doente:");
+		lblNomeDoDoente.setForeground(Color.BLACK);
+		lblNomeDoDoente.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblNomeDoDoente.setBounds(69, 83, 283, 20);
+		panel_1.add(lblNomeDoDoente);
 		
-		JLabel label_8 = new JLabel("Idade:");
-		label_8.setForeground(Color.BLACK);
-		label_8.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_8.setBounds(99, 217, 104, 35);
-		panel.add(label_8);
+		JLabel lblNReciboDo = new JLabel("Morada:");
+		lblNReciboDo.setForeground(Color.BLACK);
+		lblNReciboDo.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblNReciboDo.setBounds(68, 249, 284, 35);
+		panel_1.add(lblNReciboDo);
 		
-		JLabel label_9 = new JLabel("Sexo:");
-		label_9.setForeground(Color.BLACK);
-		label_9.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_9.setBounds(100, 181, 85, 20);
-		panel.add(label_9);
+		JLabel lblNReciboDas = new JLabel("Cidade:");
+		lblNReciboDas.setForeground(Color.BLACK);
+		lblNReciboDas.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblNReciboDas.setBounds(69, 290, 283, 35);
+		panel_1.add(lblNReciboDas);
 		
-		JLabel label_10 = new JLabel("Isen\u00E7\u00F5es :");
-		label_10.setForeground(Color.BLACK);
-		label_10.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_10.setBounds(100, 307, 141, 22);
-		panel.add(label_10);
+		txtMaputo = new JTextField();
+		txtMaputo.setEditable(false);
+		txtMaputo.setEnabled(false);
+		txtMaputo.setText("Maputo");
+		txtMaputo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtMaputo.setColumns(10);
+		txtMaputo.setBackground(Color.WHITE);
+		txtMaputo.setBounds(361, 290, 332, 30);
+		panel_1.add(txtMaputo);
 		
-		JLabel label_11 = new JLabel("N\u00BA Recibo do Boletim:");
-		label_11.setForeground(Color.BLACK);
-		label_11.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_11.setBounds(101, 341, 252, 35);
-		panel.add(label_11);
+		txtMafalala = new JTextField();
+		txtMafalala.setEditable(false);
+		txtMafalala.setEnabled(false);
+		txtMafalala.setText("Mafalala");
+		txtMafalala.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtMafalala.setColumns(10);
+		txtMafalala.setBackground(Color.WHITE);
+		txtMafalala.setBounds(362, 249, 332, 30);
+		panel_1.add(txtMafalala);
 		
-		JLabel label_12 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
-		label_12.setForeground(Color.BLACK);
-		label_12.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_12.setBounds(102, 382, 267, 35);
-		panel.add(label_12);
+		JLabel label = new JLabel("Sexo:");
+		label.setForeground(Color.BLACK);
+		label.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label.setBounds(69, 168, 283, 20);
+		panel_1.add(label);
 		
-		JLabel label_13 = new JLabel("An\u00E1lises Pedidas:");
-		label_13.setForeground(Color.BLACK);
-		label_13.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_13.setBounds(101, 259, 252, 35);
-		panel.add(label_13);
+		JLabel label_1 = new JLabel("Idade:");
+		label_1.setForeground(Color.BLACK);
+		label_1.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_1.setBounds(69, 203, 283, 35);
+		panel_1.add(label_1);
 		
-		textField_7 = new JTextField();
-		textField_7.setText("Teste");
-		textField_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_7.setEnabled(false);
-		textField_7.setEditable(false);
-		textField_7.setColumns(10);
-		textField_7.setBackground(Color.WHITE);
-		textField_7.setBounds(360, 382, 332, 30);
-		panel.add(textField_7);
+		JLabel lblNomeDoAcompanhante = new JLabel("Nome do Acompanhante:");
+		lblNomeDoAcompanhante.setForeground(Color.BLACK);
+		lblNomeDoAcompanhante.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblNomeDoAcompanhante.setBounds(69, 331, 283, 35);
+		panel_1.add(lblNomeDoAcompanhante);
+		
+		JLabel lblGrauDeParentesco = new JLabel("Grau de Parentesco:");
+		lblGrauDeParentesco.setForeground(Color.BLACK);
+		lblGrauDeParentesco.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblGrauDeParentesco.setBounds(69, 377, 283, 35);
+		panel_1.add(lblGrauDeParentesco);
+		
+		txtMe = new JTextField();
+		txtMe.setEditable(false);
+		txtMe.setEnabled(false);
+		txtMe.setText("M\u00E3e");
+		txtMe.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtMe.setColumns(10);
+		txtMe.setBackground(Color.WHITE);
+		txtMe.setBounds(362, 378, 332, 30);
+		panel_1.add(txtMe);
+		
+		txtCeleste = new JTextField();
+		txtCeleste.setEditable(false);
+		txtCeleste.setEnabled(false);
+		txtCeleste.setText("Celeste");
+		txtCeleste.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtCeleste.setColumns(10);
+		txtCeleste.setBackground(Color.WHITE);
+		txtCeleste.setBounds(362, 332, 332, 30);
+		panel_1.add(txtCeleste);
+		
+		txtMasculino = new JTextField();
+		txtMasculino.setText("Masculino");
+		txtMasculino.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtMasculino.setEnabled(false);
+		txtMasculino.setEditable(false);
+		txtMasculino.setColumns(10);
+		txtMasculino.setBackground(Color.WHITE);
+		txtMasculino.setBounds(362, 158, 216, 30);
+		panel_1.add(txtMasculino);
 		
 		textField_8 = new JTextField();
-		textField_8.setText("Teste");
+		textField_8.setText(">14");
 		textField_8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_8.setEnabled(false);
 		textField_8.setEditable(false);
 		textField_8.setColumns(10);
 		textField_8.setBackground(Color.WHITE);
-		textField_8.setBounds(360, 341, 332, 30);
-		panel.add(textField_8);
+		textField_8.setBounds(362, 203, 216, 30);
+		panel_1.add(textField_8);
 		
-		textField_9 = new JTextField();
-		textField_9.setText("Teste");
-		textField_9.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_9.setEnabled(false);
-		textField_9.setEditable(false);
-		textField_9.setColumns(10);
-		textField_9.setBackground(Color.WHITE);
-		textField_9.setBounds(360, 299, 216, 30);
-		panel.add(textField_9);
+		JLabel lblContactoAcompanhante = new JLabel("Contacto do Acompanhante:");
+		lblContactoAcompanhante.setForeground(Color.BLACK);
+		lblContactoAcompanhante.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblContactoAcompanhante.setBounds(69, 423, 283, 35);
+		panel_1.add(lblContactoAcompanhante);
 		
-		textField_13 = new JTextField();
-		textField_13.setText("Teste");
-		textField_13.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_13.setEnabled(false);
-		textField_13.setEditable(false);
-		textField_13.setColumns(10);
-		textField_13.setBackground(Color.WHITE);
-		textField_13.setBounds(360, 258, 165, 30);
-		panel.add(textField_13);
+		textField_6 = new JTextField();
+		textField_6.setEditable(false);
+		textField_6.setEnabled(false);
+		textField_6.setText("82545783");
+		textField_6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_6.setColumns(10);
+		textField_6.setBackground(Color.WHITE);
+		textField_6.setBounds(362, 424, 332, 30);
+		panel_1.add(textField_6);
 		
-		textField_14 = new JTextField();
-		textField_14.setText("Teste");
-		textField_14.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_14.setEnabled(false);
-		textField_14.setEditable(false);
-		textField_14.setColumns(10);
-		textField_14.setBackground(Color.WHITE);
-		textField_14.setBounds(360, 217, 165, 30);
-		panel.add(textField_14);
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(Janela_3.class.getResource("/img/fundo.jpg")));
+		lblNewLabel.setBounds(-3, -27, 840, 559);
+		panel_1.add(lblNewLabel);
 		
-		textField_15 = new JTextField();
-		textField_15.setText("Teste");
-		textField_15.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_15.setEnabled(false);
-		textField_15.setEditable(false);
-		textField_15.setColumns(10);
-		textField_15.setBackground(Color.WHITE);
-		textField_15.setBounds(360, 176, 165, 30);
-		panel.add(textField_15);
+		JPanel panel_2 = new JPanel();
+		panel_2.setLayout(null);
+		tabbedPane.addTab("Situação de Saude", null, panel_2, null);
 		
-		JLabel label_14 = new JLabel("New label");
-		label_14.setIcon(new ImageIcon(Janela_3.class.getResource("/img/fundo.jpg")));
-		label_14.setBounds(-3, -11, 972, 550);
-		panel.add(label_14);
+		JLabel lblProviniencia_1 = new JLabel("Proveni\u00EAncia :");
+		lblProviniencia_1.setForeground(Color.BLACK);
+		lblProviniencia_1.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblProviniencia_1.setBounds(69, 216, 183, 35);
+		panel_2.add(lblProviniencia_1);
 		
-		JPanel panel_3 = new JPanel();
-		panel_3.setLayout(null);
-		tabbedPane.addTab("Situação de Saude", null, panel_3, null);
+		JLabel lblIsenoDePagamento = new JLabel("Isen\u00E7\u00E3o de Pagamento:");
+		lblIsenoDePagamento.setForeground(Color.BLACK);
+		lblIsenoDePagamento.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblIsenoDePagamento.setBounds(68, 172, 260, 22);
+		panel_2.add(lblIsenoDePagamento);
 		
-		JLabel label_15 = new JLabel("Resid\u00EAncia :");
-		label_15.setForeground(Color.BLACK);
-		label_15.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_15.setBounds(93, 245, 133, 20);
-		panel_3.add(label_15);
+		textField_7 = new JTextField();
+		textField_7.setEnabled(false);
+		textField_7.setText("555511744");
+		textField_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_7.setEditable(false);
+		textField_7.setColumns(10);
+		textField_7.setBackground(Color.WHITE);
+		textField_7.setBounds(353, 310, 332, 30);
+		panel_2.add(textField_7);
 		
-		textField_16 = new JTextField();
-		textField_16.setText("Teste");
-		textField_16.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_16.setEnabled(false);
-		textField_16.setEditable(false);
-		textField_16.setColumns(10);
-		textField_16.setBackground(Color.WHITE);
-		textField_16.setBounds(359, 156, 216, 30);
-		panel_3.add(textField_16);
+		JLabel label_3 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
+		label_3.setForeground(Color.BLACK);
+		label_3.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_3.setBounds(70, 311, 267, 35);
+		panel_2.add(label_3);
 		
-		textField_17 = new JTextField();
-		textField_17.setText("Teste");
-		textField_17.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_17.setEnabled(false);
-		textField_17.setEditable(false);
-		textField_17.setColumns(10);
-		textField_17.setBackground(Color.WHITE);
-		textField_17.setBounds(359, 197, 332, 30);
-		panel_3.add(textField_17);
+		JLabel label_2 = new JLabel("An\u00E1lises Pedidas:");
+		label_2.setForeground(Color.BLACK);
+		label_2.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_2.setBounds(68, 261, 252, 35);
+		panel_2.add(label_2);
 		
-		textField_18 = new JTextField();
-		textField_18.setText("Teste");
-		textField_18.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_18.setEnabled(false);
-		textField_18.setEditable(false);
-		textField_18.setColumns(10);
-		textField_18.setBackground(Color.WHITE);
-		textField_18.setBounds(359, 238, 332, 30);
-		panel_3.add(textField_18);
+		textField_1 = new JTextField();
+		textField_1.setText("Teste");
+		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_1.setEnabled(false);
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		textField_1.setBackground(Color.WHITE);
+		textField_1.setBounds(353, 166, 216, 30);
+		panel_2.add(textField_1);
 		
-		JLabel label_16 = new JLabel("Contacto Responsavel :");
-		label_16.setForeground(Color.BLACK);
-		label_16.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_16.setBounds(93, 317, 250, 35);
-		panel_3.add(label_16);
+		textField_3 = new JTextField();
+		textField_3.setText("Teste");
+		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_3.setEnabled(false);
+		textField_3.setEditable(false);
+		textField_3.setColumns(10);
+		textField_3.setBackground(Color.WHITE);
+		textField_3.setBounds(353, 216, 216, 30);
+		panel_2.add(textField_3);
 		
-		JLabel label_17 = new JLabel("Nome Responsavel :");
-		label_17.setForeground(Color.BLACK);
-		label_17.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_17.setBounds(93, 286, 228, 20);
-		panel_3.add(label_17);
+		textField_4 = new JTextField();
+		textField_4.setText("Teste");
+		textField_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField_4.setEnabled(false);
+		textField_4.setEditable(false);
+		textField_4.setColumns(10);
+		textField_4.setBackground(Color.WHITE);
+		textField_4.setBounds(353, 261, 216, 30);
+		panel_2.add(textField_4);
 		
-		JLabel label_18 = new JLabel("Proveni\u00EAncia :");
-		label_18.setForeground(Color.BLACK);
-		label_18.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_18.setBounds(93, 197, 183, 35);
-		panel_3.add(label_18);
+		JLabel label_30 = new JLabel("New label");
+		label_30.setLabelFor(panel_2);
+		label_30.setIcon(new ImageIcon(Janela_3.class.getResource("/img/fundo.jpg")));
+		label_30.setBounds(-3, -21, 975, 560);
+		panel_2.add(label_30);
 		
-		JLabel label_19 = new JLabel("Tipo de Paciente :");
-		label_19.setForeground(Color.BLACK);
-		label_19.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_19.setBounds(94, 156, 252, 35);
-		panel_3.add(label_19);
-		
-		textField_19 = new JTextField();
-		textField_19.setText("Teste");
-		textField_19.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_19.setEnabled(false);
-		textField_19.setEditable(false);
-		textField_19.setColumns(10);
-		textField_19.setBackground(Color.WHITE);
-		textField_19.setBounds(359, 279, 332, 30);
-		panel_3.add(textField_19);
-		
-		textField_20 = new JTextField();
-		textField_20.setText("Teste");
-		textField_20.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_20.setEnabled(false);
-		textField_20.setEditable(false);
-		textField_20.setColumns(10);
-		textField_20.setBackground(Color.WHITE);
-		textField_20.setBounds(359, 320, 332, 30);
-		panel_3.add(textField_20);
-		
-		JLabel label_20 = new JLabel("New label");
-		label_20.setIcon(new ImageIcon(Janela_3.class.getResource("/img/fundo.jpg")));
-		label_20.setBounds(-3, -21, 975, 560);
-		panel_3.add(label_20);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setLayout(null);
-		tabbedPane.addTab("Parecer do Médico", null, panel_4, null);
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		tabbedPane.addTab("Parecer do Médico", null, panel, null);
 		
 		JButton button_1 = new JButton("Gravar");
 		button_1.setFont(new Font("Consolas", Font.PLAIN, 17));
 		button_1.setBackground(Color.WHITE);
-		button_1.setBounds(600, 323, 144, 48);
-		panel_4.add(button_1);
+		button_1.setBounds(600, 469, 144, 48);
+		panel.add(button_1);
 		
-		JLabel label_21 = new JLabel("Coment\u00E1rios :");
-		label_21.setForeground(Color.BLACK);
-		label_21.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_21.setBounds(92, 59, 152, 35);
-		panel_4.add(label_21);
+		JLabel label_4 = new JLabel("Coment\u00E1rios :");
+		label_4.setForeground(Color.BLACK);
+		label_4.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_4.setBounds(92, 59, 152, 35);
+		panel.add(label_4);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(337, 59, 407, 167);
-		panel_4.add(scrollPane);
+		scrollPane.setBounds(337, 59, 441, 167);
+		panel.add(scrollPane);
 		
-		JLabel label_22 = new JLabel("Medicamento:");
-		label_22.setForeground(Color.BLACK);
-		label_22.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_22.setBounds(92, 254, 152, 35);
-		panel_4.add(label_22);
+		JTextPane textPane_1 = new JTextPane();
+		textPane_1.setFont(new Font("Consolas", Font.PLAIN, 16));
+		scrollPane.setViewportView(textPane_1);
+		
+		JLabel lblMedicamentos = new JLabel("Medicamentos:");
+		lblMedicamentos.setForeground(Color.BLACK);
+		lblMedicamentos.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblMedicamentos.setBounds(92, 254, 152, 35);
+		panel.add(lblMedicamentos);
 		
 		JComboBox comboBox_3 = new JComboBox();
 		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Paracetamol"}));
 		comboBox_3.setFont(new Font("Times New Roman", Font.PLAIN, 17));
-		comboBox_3.setBounds(337, 254, 235, 32);
-		panel_4.add(comboBox_3);
+		comboBox_3.setBounds(337, 254, 210, 32);
+		panel.add(comboBox_3);
 		
-		textField_21 = new JTextField();
-		textField_21.setText("20");
-		textField_21.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_21.setColumns(10);
-		textField_21.setBackground(Color.WHITE);
-		textField_21.setBounds(662, 254, 82, 30);
-		panel_4.add(textField_21);
+		textField = new JTextField();
+		textField.setText("20");
+		textField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		textField.setColumns(10);
+		textField.setBackground(Color.WHITE);
+		textField.setBounds(608, 254, 72, 30);
+		panel.add(textField);
 		
-		JLabel label_23 = new JLabel("Qnt:");
-		label_23.setForeground(Color.BLACK);
-		label_23.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_23.setBounds(600, 254, 52, 35);
-		panel_4.add(label_23);
+		JButton btnInserir = new JButton("Inserir");
+		btnInserir.setFont(new Font("Consolas", Font.PLAIN, 14));
+		btnInserir.setBackground(Color.WHITE);
+		btnInserir.setBounds(689, 254, 89, 31);
+		panel.add(btnInserir);
+		
+		JLabel label_6 = new JLabel("Qnt:");
+		label_6.setForeground(Color.BLACK);
+		label_6.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_6.setBounds(557, 254, 52, 35);
+		panel.add(label_6);
+		
+		JLabel lblDiagnsticos = new JLabel("Diagn\u00F3sticos:");
+		lblDiagnsticos.setForeground(Color.BLACK);
+		lblDiagnsticos.setFont(new Font("Consolas", Font.PLAIN, 20));
+		lblDiagnsticos.setBounds(92, 409, 152, 35);
+		panel.add(lblDiagnsticos);
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(455, 297, 323, 91);
+		panel.add(scrollPane_2);
+		
+		JTextPane textPane_2 = new JTextPane();
+		scrollPane_2.setViewportView(textPane_2);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(337, 297, 117, 91);
+		panel.add(scrollPane_1);
+		
+		JTextPane textPane = new JTextPane();
+		textPane.setFont(new Font("Consolas", Font.PLAIN, 16));
+		scrollPane_1.setViewportView(textPane);
 		
 		JButton button_3 = new JButton("Desistiu");
 		button_3.setFont(new Font("Consolas", Font.PLAIN, 17));
 		button_3.setBackground(Color.WHITE);
-		button_3.setBounds(428, 323, 144, 48);
-		panel_4.add(button_3);
+		button_3.setBounds(428, 469, 144, 48);
+		panel.add(button_3);
 		
-		JLabel label_24 = new JLabel("New label");
-		label_24.setIcon(new ImageIcon(Janela_3.class.getResource("/img/fundo.jpg")));
-		label_24.setBounds(0, -8, 975, 560);
-		panel_4.add(label_24);
+		JCheckBox chckbxDiagnstico = new JCheckBox("Diagn\u00F3stico 1");
+		chckbxDiagnstico.setFont(new Font("Consolas", Font.PLAIN, 14));
+		chckbxDiagnstico.setBounds(337, 409, 144, 30);
+		panel.add(chckbxDiagnstico);
+		
+		JCheckBox chckbxDiagnstico_1 = new JCheckBox("Diagn\u00F3stico 2");
+		chckbxDiagnstico_1.setFont(new Font("Consolas", Font.PLAIN, 14));
+		chckbxDiagnstico_1.setBounds(497, 409, 144, 30);
+		panel.add(chckbxDiagnstico_1);
+		
+		JCheckBox chckbxDiagnstico_2 = new JCheckBox("Diagn\u00F3stico 3");
+		chckbxDiagnstico_2.setFont(new Font("Consolas", Font.PLAIN, 14));
+		chckbxDiagnstico_2.setBounds(650, 409, 144, 30);
+		panel.add(chckbxDiagnstico_2);
+		
+		JLabel label_7 = new JLabel("New label");
+		label_7.setIcon(new ImageIcon(Janela_3.class.getResource("/img/fundo.jpg")));
+		label_7.setBounds(0, -8, 975, 560);
+		panel.add(label_7);
 		
 		JLabel label_27 = new JLabel("");
 		label_27.setLabelFor(contentPane);
