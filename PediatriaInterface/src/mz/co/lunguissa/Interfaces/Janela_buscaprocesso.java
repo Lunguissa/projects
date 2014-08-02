@@ -151,6 +151,7 @@ public class Janela_buscaprocesso extends JFrame {
 	     data=dfmt.format(dataSistema);
 	     lblData.setText(data);
 	     
+	     
 	     SimpleDateFormat timeFormat = new SimpleDateFormat("HH'h':mm'm'");
 	     horas=timeFormat.format(dataSistema);
 	     lblHora.setText(horas);
