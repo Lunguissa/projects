@@ -285,7 +285,6 @@ public class Janela_3 extends JFrame {
 		
 		textField_7 = new JTextField();
 		textField_7.setEnabled(false);
-		textField_7.setText("555511744");
 		textField_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_7.setEditable(false);
 		textField_7.setColumns(10);
@@ -306,7 +305,6 @@ public class Janela_3 extends JFrame {
 		panel_2.add(label_2);
 		
 		textField_1 = new JTextField();
-		textField_1.setText("Teste");
 		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_1.setEnabled(false);
 		textField_1.setEditable(false);
@@ -316,7 +314,6 @@ public class Janela_3 extends JFrame {
 		panel_2.add(textField_1);
 		
 		textField_3 = new JTextField();
-		textField_3.setText("Teste");
 		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_3.setEnabled(false);
 		textField_3.setEditable(false);
