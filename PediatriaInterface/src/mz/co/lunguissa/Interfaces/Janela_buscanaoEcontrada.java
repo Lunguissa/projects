@@ -33,12 +33,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
 
-public class Janela_buscaprocesso extends JFrame {
+public class Janela_buscanaoEcontrada extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private String numero="numero";
-	private JTextField textField;
 	private String data,horas,user;
 	private Date dataSistema =new Date();
 	/**
@@ -48,7 +47,7 @@ public class Janela_buscaprocesso extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Janela_buscaprocesso frame = new Janela_buscaprocesso();
+					Janela_buscanaoEcontrada frame = new Janela_buscanaoEcontrada();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,7 +59,7 @@ public class Janela_buscaprocesso extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Janela_buscaprocesso() {
+	public Janela_buscanaoEcontrada() {
 		setTitle("HCM");
 		setResizable(false);
 		
@@ -76,7 +75,6 @@ public class Janela_buscaprocesso extends JFrame {
 		} catch (Exception e) {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
-		
 		point.users.add("Usuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
@@ -91,61 +89,61 @@ public class Janela_buscaprocesso extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
-		JButton btnSeguinte = new JButton("Seguinte");
+		JButton btnSeguinte = new JButton("OK");
 		btnSeguinte.setFont(new Font("Consolas", Font.PLAIN, 17));
 		btnSeguinte.setBackground(Color.WHITE);
-		btnSeguinte.setBounds(449, 259, 155, 37);
+		btnSeguinte.setBounds(367, 405, 113, 30);
 		panel_1.add(btnSeguinte);
 		
-		JLabel lblNmeroDeProcesso = new JLabel("N\u00FAmero do Processo:");
-		lblNmeroDeProcesso.setForeground(Color.BLACK);
-		lblNmeroDeProcesso.setFont(new Font("Consolas", Font.PLAIN, 20));
-		lblNmeroDeProcesso.setBounds(60, 225, 245, 20);
-		panel_1.add(lblNmeroDeProcesso);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(309, 175, 242, 199);
+		panel_1.add(scrollPane);
+		
+		JTextPane txtpnOPacienteCom = new JTextPane();
+		txtpnOPacienteCom.setEditable(false);
+		txtpnOPacienteCom.setFont(new Font("Consolas", Font.PLAIN, 18));
+		txtpnOPacienteCom.setText("O paciente com o N\u00FAmero de Processo: \n"+numero+" \nj\u00E1 est\u00E1 registrado! Actualize os dados que forem necess\u00E1rios.");
+		scrollPane.setViewportView(txtpnOPacienteCom);
+		
+		JLabel lblUser = new JLabel("<dynamic>");
+		lblUser.setFont(new Font("Consolas", Font.PLAIN, 14));
+		lblUser.setBounds(441, 514, 245, 30);
+		panel_1.add(lblUser);
+		
+		JLabel label_1 = new JLabel("Nome do Utilizador:");
+		label_1.setFont(new Font("Consolas", Font.PLAIN, 14));
+		label_1.setBounds(266, 514, 170, 30);
+		panel_1.add(label_1);
 		
 		JLabel lblData = new JLabel("2 de August de 2014");
 		lblData.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblData.setBounds(257, 488, 170, 30);
+		lblData.setBounds(266, 488, 170, 30);
 		panel_1.add(lblData);
 		
-		JLabel label_2 = new JLabel("::");
-		label_2.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_2.setBounds(432, 488, 68, 30);
-		panel_1.add(label_2);
+		JLabel label_3 = new JLabel("::");
+		label_3.setFont(new Font("Consolas", Font.PLAIN, 14));
+		label_3.setBounds(441, 488, 68, 30);
+		panel_1.add(label_3);
 		
-		JLabel lblUser = new JLabel("Abel Fabiao");
-		lblUser.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblUser.setBounds(432, 514, 245, 30);
-		panel_1.add(lblUser);
-		
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField.setColumns(10);
-		textField.setBackground(Color.WHITE);
-		textField.setBounds(321, 218, 283, 30);
-		panel_1.add(textField);
-		
-		JLabel label_4 = new JLabel("Nome do Utilizador:");
-		label_4.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_4.setBounds(257, 514, 170, 30);
-		panel_1.add(label_4);
-		
-		JLabel lblHora = new JLabel("20:15");
+		JLabel lblHora = new JLabel("07h:56m");
 		lblHora.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblHora.setBounds(454, 488, 96, 30);
+		lblHora.setBounds(463, 488, 96, 30);
 		panel_1.add(lblHora);
 	
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Janela_buscaprocesso.class.getResource("/img/fundo.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(Janela_buscanaoEcontrada.class.getResource("/img/fundo.jpg")));
 		lblNewLabel.setBounds(-3, -27, 840, 582);
 		panel_1.add(lblNewLabel);
 		
 		JLabel label_27 = new JLabel("");
 		label_27.setLabelFor(contentPane);
-		label_27.setIcon(new ImageIcon(Janela_buscaprocesso.class.getResource("/img/siga.PNG")));
+		label_27.setIcon(new ImageIcon(Janela_buscanaoEcontrada.class.getResource("/img/siga.PNG")));
 		label_27.setBounds(-24, -58, 1242, 824);
+		
 		contentPane.add(label_27);
+		
+
 		
 		 DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy");  
 	     data=dfmt.format(dataSistema);

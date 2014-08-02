@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 
 import mz.co.lunguissa.Funcionalidades.DateTextField;
+import mz.co.lunguissa.Funcionalidades.ObservingTextField;
 import mz.co.lunguissa.Funcionalidades.point;
 
 import javax.swing.ImageIcon;
@@ -30,13 +31,20 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 
+import com.qt.datapicker.DatePicker;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.util.Date;
+import java.util.Locale;
+import com.toedter.calendar.JDateChooser;
+
 public class Janela_1 extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtTesteas;
 	private JTextField txtAgostinhoMavota;
-	private DateTextField textField_2;
 	private JTextField txtMaputo;
 	private JTextField txtMafalala;
 	private JTextField txtCeleste;
@@ -123,15 +131,6 @@ public class Janela_1 extends JFrame {
 		txtAgostinhoMavota.setBounds(362, 76, 332, 30);
 		panel_1.add(txtAgostinhoMavota);
 		
-		textField_2 = new DateTextField();
-		textField_2.repaint();
-		textField_2.setText("20/07/1991");
-		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_2.setColumns(10);
-		textField_2.setBackground(Color.WHITE);
-		textField_2.setBounds(362, 117, 216, 30);
-		panel_1.add(textField_2);
-		
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
 		lblDataDeNascimento.setForeground(Color.BLACK);
 		lblDataDeNascimento.setFont(new Font("Consolas", Font.PLAIN, 20));
@@ -173,6 +172,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(txtMafalala);
 		
 		JRadioButton radioButton = new JRadioButton("Feminino");
+		buttonGroup.add(radioButton);
 		radioButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		radioButton.setBackground(Color.WHITE);
 		radioButton.setBounds(490, 158, 109, 30);
@@ -185,6 +185,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(label);
 		
 		JRadioButton radioButton_1 = new JRadioButton("Masculino");
+		buttonGroup.add(radioButton_1);
 		radioButton_1.setSelected(true);
 		radioButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		radioButton_1.setBackground(Color.WHITE);
@@ -236,6 +237,11 @@ public class Janela_1 extends JFrame {
 		lblContactoAcompanhante.setFont(new Font("Consolas", Font.PLAIN, 20));
 		lblContactoAcompanhante.setBounds(69, 423, 283, 35);
 		panel_1.add(lblContactoAcompanhante);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setLocale(new Locale("pt", "PT"));
+		dateChooser.setBounds(362, 117, 147, 35);
+		panel_1.add(dateChooser);
 		
 		textField_6 = new JTextField();
 		textField_6.setText("82545783");
