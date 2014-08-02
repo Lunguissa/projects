@@ -290,7 +290,6 @@ public class Janela_1 extends JFrame {
 		
 		textField_7 = new JTextField();
 		textField_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_7.setEditable(false);
 		textField_7.setColumns(10);
 		textField_7.setBackground(Color.WHITE);
 		textField_7.setBounds(359, 339, 350, 30);

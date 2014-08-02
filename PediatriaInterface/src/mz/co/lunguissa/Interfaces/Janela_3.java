@@ -403,6 +403,7 @@ public class Janela_3 extends JFrame {
 		panel.add(scrollPane_2);
 		
 		JTextPane textPane_2 = new JTextPane();
+		textPane_2.setEditable(false);
 		scrollPane_2.setViewportView(textPane_2);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -410,6 +411,7 @@ public class Janela_3 extends JFrame {
 		panel.add(scrollPane_1);
 		
 		JTextPane textPane = new JTextPane();
+		textPane.setEditable(false);
 		textPane.setFont(new Font("Consolas", Font.PLAIN, 16));
 		scrollPane_1.setViewportView(textPane);
 		

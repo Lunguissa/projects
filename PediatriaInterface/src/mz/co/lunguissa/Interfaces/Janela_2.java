@@ -103,7 +103,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(lblNmeroDeProcesso);
 		
 		txtTesteas = new JTextField();
-		txtTesteas.setEnabled(false);
+		txtTesteas.setEditable(false);
 		txtTesteas.setText("97654");
 		txtTesteas.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtTesteas.setColumns(10);
@@ -112,7 +112,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(txtTesteas);
 		
 		txtAgostinhoMavota = new JTextField();
-		txtAgostinhoMavota.setEnabled(false);
+		txtAgostinhoMavota.setEditable(false);
 		txtAgostinhoMavota.setText("Agostinho Mavota");
 		txtAgostinhoMavota.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtAgostinhoMavota.setColumns(10);
@@ -121,7 +121,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(txtAgostinhoMavota);
 		
 		textField_2 = new JTextField();
-		textField_2.setEnabled(false);
+		textField_2.setEditable(false);
 		textField_2.repaint();
 		textField_2.setText("20/07/1991");
 		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 19));
@@ -155,6 +155,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(lblNReciboDas);
 		
 		txtMafalala = new JTextField();
+		txtMafalala.setEditable(false);
 		txtMafalala.setText("Mafalala");
 		txtMafalala.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtMafalala.setColumns(10);
@@ -208,6 +209,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(lblGrauDeParentesco);
 		
 		txtMe = new JTextField();
+		txtMe.setEditable(false);
 		txtMe.setText("M\u00E3e");
 		txtMe.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtMe.setColumns(10);
@@ -216,6 +218,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(txtMe);
 		
 		txtCeleste = new JTextField();
+		txtCeleste.setEditable(false);
 		txtCeleste.setText("Celeste");
 		txtCeleste.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtCeleste.setColumns(10);
@@ -247,6 +250,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(lblContactoAcompanhante);
 		
 		textField_6 = new JTextField();
+		textField_6.setEditable(false);
 		textField_6.setText("82545783");
 		textField_6.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		textField_6.setColumns(10);
