@@ -47,7 +47,6 @@ public class Janela_3 extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_3;
-	private JTextField textField_4;
 	private JTextField txtMasculino;
 	private JTextField textField_8;
 
@@ -275,13 +274,13 @@ public class Janela_3 extends JFrame {
 		JLabel lblProviniencia_1 = new JLabel("Proveni\u00EAncia :");
 		lblProviniencia_1.setForeground(Color.BLACK);
 		lblProviniencia_1.setFont(new Font("Consolas", Font.PLAIN, 20));
-		lblProviniencia_1.setBounds(69, 216, 183, 35);
+		lblProviniencia_1.setBounds(120, 174, 183, 35);
 		panel_2.add(lblProviniencia_1);
 		
 		JLabel lblIsenoDePagamento = new JLabel("Isen\u00E7\u00E3o de Pagamento:");
 		lblIsenoDePagamento.setForeground(Color.BLACK);
 		lblIsenoDePagamento.setFont(new Font("Consolas", Font.PLAIN, 20));
-		lblIsenoDePagamento.setBounds(68, 172, 260, 22);
+		lblIsenoDePagamento.setBounds(119, 130, 260, 22);
 		panel_2.add(lblIsenoDePagamento);
 		
 		textField_7 = new JTextField();
@@ -291,19 +290,19 @@ public class Janela_3 extends JFrame {
 		textField_7.setEditable(false);
 		textField_7.setColumns(10);
 		textField_7.setBackground(Color.WHITE);
-		textField_7.setBounds(353, 310, 332, 30);
+		textField_7.setBounds(403, 355, 332, 30);
 		panel_2.add(textField_7);
 		
 		JLabel label_3 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_3.setBounds(70, 311, 267, 35);
+		label_3.setBounds(120, 356, 267, 35);
 		panel_2.add(label_3);
 		
 		JLabel label_2 = new JLabel("An\u00E1lises Pedidas:");
 		label_2.setForeground(Color.BLACK);
 		label_2.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_2.setBounds(68, 261, 252, 35);
+		label_2.setBounds(119, 219, 252, 35);
 		panel_2.add(label_2);
 		
 		textField_1 = new JTextField();
@@ -313,7 +312,7 @@ public class Janela_3 extends JFrame {
 		textField_1.setEditable(false);
 		textField_1.setColumns(10);
 		textField_1.setBackground(Color.WHITE);
-		textField_1.setBounds(353, 166, 216, 30);
+		textField_1.setBounds(404, 124, 216, 30);
 		panel_2.add(textField_1);
 		
 		textField_3 = new JTextField();
@@ -323,18 +322,16 @@ public class Janela_3 extends JFrame {
 		textField_3.setEditable(false);
 		textField_3.setColumns(10);
 		textField_3.setBackground(Color.WHITE);
-		textField_3.setBounds(353, 216, 216, 30);
+		textField_3.setBounds(404, 174, 216, 30);
 		panel_2.add(textField_3);
 		
-		textField_4 = new JTextField();
-		textField_4.setText("Teste");
-		textField_4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_4.setEnabled(false);
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
-		textField_4.setBackground(Color.WHITE);
-		textField_4.setBounds(353, 261, 216, 30);
-		panel_2.add(textField_4);
+		JScrollPane scrollPane_3 = new JScrollPane();
+		scrollPane_3.setBounds(404, 229, 331, 115);
+		panel_2.add(scrollPane_3);
+		
+		JTextPane textPane_3 = new JTextPane();
+		textPane_3.setEditable(false);
+		scrollPane_3.setViewportView(textPane_3);
 		
 		JLabel label_30 = new JLabel("New label");
 		label_30.setLabelFor(panel_2);
