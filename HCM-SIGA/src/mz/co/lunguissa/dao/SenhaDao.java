@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+import org.apache.log4j.Logger;
 import mz.co.lunguissa.entity.Senha;
 
 public class SenhaDao {
@@ -16,6 +17,7 @@ public class SenhaDao {
 	private String database2;
 	private String user;
 	private String password;
+	private static Logger log = Logger.getLogger(SenhaDao.class);
 
 	public SenhaDao(Properties prop) {
 		server = prop.getProperty("server");
@@ -42,7 +44,7 @@ public class SenhaDao {
 			Connection con = DriverManager.getConnection(connectionUrl);
 			return con;
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			log.info(e);
 		}
 		return null;
 	}
@@ -90,10 +92,10 @@ public class SenhaDao {
 			return senha;
 		} catch (SQLException se) {
 			// Handle errors for JDBC
-			se.printStackTrace();
+			log.info(se);
 		} catch (Exception e) {
 			// Handle errors for Class.forName
-			e.printStackTrace();
+			log.info(e);
 		} finally {
 			// finally block used to close resources
 			try {
@@ -123,10 +125,10 @@ public class SenhaDao {
 			conn.close();
 		} catch (SQLException se) {
 			// Handle errors for JDBC
-			se.printStackTrace();
+			log.info(se);
 		} catch (Exception e) {
 			// Handle errors for Class.forName
-			e.printStackTrace();
+			log.info(e);
 		} finally {
 			// finally block used to close resources
 			try {
