@@ -16,9 +16,12 @@ public class DetalhesDoente
 	private int insencaoPagamento;
 	private int provenienvia;
 	private boolean altaBoolean;
+	private int ent_n_entidade;
 	private String serv_n_servico;
 	private int n_senha;
-	private Date data_hora_senha;
+	
+	
+	
 	public long getNumProcesso() {
 		return numProcesso;
 	}
@@ -97,11 +100,12 @@ public class DetalhesDoente
 	public void setN_senha(int n_senha) {
 		this.n_senha = n_senha;
 	}
-	public Date getData_hora_senha() {
-		return data_hora_senha;
+	
+	public int getEnt_n_entidade() {
+		return ent_n_entidade;
 	}
-	public void setData_hora_senha(Date data_hora_senha) {
-		this.data_hora_senha = data_hora_senha;
+	public void setEnt_n_entidade(int ent_n_entidade) {
+		this.ent_n_entidade = ent_n_entidade;
 	}
 	
 	
