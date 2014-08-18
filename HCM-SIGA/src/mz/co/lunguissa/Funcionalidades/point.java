@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
@@ -38,7 +39,8 @@ public class point {
 	 
 	 
 	    public static Date somarData (int dias,Date data) {  
-	        Calendar calendar = Calendar.getInstance();  
+	    	Locale locale = new Locale("pt", "PT");  
+	        Calendar calendar = Calendar.getInstance(locale);  
 	        calendar.setTime(data);  
 	        calendar.add(Calendar.DATE, dias);  
 	       
@@ -49,6 +51,8 @@ public class point {
 	    	DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	    	Date date = new Date();
 	    	return dateFormat.format(date);
+	    	
+	    
 	    }
 
 

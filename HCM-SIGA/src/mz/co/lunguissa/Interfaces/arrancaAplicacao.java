@@ -24,10 +24,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.swing.ImageIcon;
 
-import mz.co.lunguissa.Testes.runTeste;
 
 import java.awt.Window.Type;
 import java.io.IOException;
+import javax.swing.UIManager;
 
 public class arrancaAplicacao extends JFrame implements Runnable {
 	private JLabel lblDinamico;
@@ -37,6 +37,7 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 	 * Launch the application.
 	 */
 	public JProgressBar progressBar;
+	private JLabel lblNewLabel_1;
 	public static void main(String[] args) {
 		arrancaAplicacao sp = new arrancaAplicacao();
 		sp.setVisible(true);
@@ -47,103 +48,44 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 	 */
 	public arrancaAplicacao() {
 		super("Conservatória 1.0");
+		setTitle("HCM");
 		setType(Type.UTILITY);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 707, 513);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(70, 130, 180));
+		contentPane.setBackground(UIManager.getColor("Button.background"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		setLocation(findScreenCenter());
 		progressBar = new JProgressBar();
-		progressBar.setForeground(new Color(70, 130, 180));
+		progressBar.setBounds(10, 440, 681, 33);
+		progressBar.setForeground(new Color(0, 0, 51));
 		
 		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBounds(221, 5, 0, 340);
 		lblNewLabel.setForeground(new Color(0, 102, 153));
 		lblNewLabel.setFont(new Font("Rockwell Condensed", Font.PLAIN, 30));
 		lblNewLabel.setIcon(new ImageIcon("Capture.PNG"));
 		JLabel lblSoft = new JLabel(" Carregando a aplicacao.  Aguarde .......");
+		lblSoft.setBounds(89, 387, 419, 53);
 		lblSoft.setBackground(new Color(255, 250, 205));
-		lblSoft.setForeground(new Color(255, 250, 240));
+		lblSoft.setForeground(new Color(0, 0, 51));
 		lblSoft.setFont(new Font("Rockwell Condensed", Font.PLAIN, 32));
 		lblDinamico = new JLabel("10%");
-		lblDinamico.setForeground(new Color(255, 250, 250));
+		lblDinamico.setBounds(635, 395, 56, 34);
+		lblDinamico.setForeground(new Color(0, 0, 51));
 		lblDinamico.setFont(new Font("Rockwell Condensed", Font.PLAIN, 28));
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane
-				.setHorizontalGroup(gl_contentPane
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								gl_contentPane
-										.createSequentialGroup()
-										.addGroup(
-												gl_contentPane
-														.createParallelGroup(
-																Alignment.LEADING)
-														.addGroup(
-																gl_contentPane
-																		.createSequentialGroup()
-																		.addContainerGap()
-																		.addGroup(
-																				gl_contentPane
-																						.createParallelGroup(
-																								Alignment.LEADING,
-																								false)
-																						.addComponent(
-																								progressBar,
-																								GroupLayout.PREFERRED_SIZE,
-																								649,
-																								GroupLayout.PREFERRED_SIZE)
-																						.addGroup(
-																								gl_contentPane
-																										.createSequentialGroup()
-																										.addComponent(
-																												lblSoft,
-																												GroupLayout.PREFERRED_SIZE,
-																												419,
-																												GroupLayout.PREFERRED_SIZE)
-																										.addPreferredGap(
-																												ComponentPlacement.RELATED,
-																												GroupLayout.DEFAULT_SIZE,
-																												Short.MAX_VALUE)
-																										.addComponent(
-																												lblDinamico))))
-														.addGroup(
-																gl_contentPane
-																		.createSequentialGroup()
-																		.addGap(132)
-																		.addComponent(
-																				lblNewLabel)))
-										.addContainerGap(32, Short.MAX_VALUE)));
-		gl_contentPane
-				.setVerticalGroup(gl_contentPane
-						.createParallelGroup(Alignment.TRAILING)
-						.addGroup(
-								gl_contentPane
-										.createSequentialGroup()
-										.addComponent(lblNewLabel,
-												GroupLayout.PREFERRED_SIZE,
-												340, GroupLayout.PREFERRED_SIZE)
-										.addGap(31)
-										.addGroup(
-												gl_contentPane
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																lblSoft,
-																GroupLayout.DEFAULT_SIZE,
-																53,
-																Short.MAX_VALUE)
-														.addComponent(
-																lblDinamico))
-										.addPreferredGap(
-												ComponentPlacement.RELATED)
-										.addComponent(progressBar,
-												GroupLayout.PREFERRED_SIZE, 33,
-												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap()));
-		contentPane.setLayout(gl_contentPane);
+		contentPane.setLayout(null);
+		
+		lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(arrancaAplicacao.class.getResource("/img/fundosplash.PNG")));
+		lblNewLabel_1.setBounds(-42, -27, 780, 415);
+		contentPane.add(lblNewLabel_1);
+		contentPane.add(progressBar);
+		contentPane.add(lblSoft);
+		contentPane.add(lblDinamico);
+		contentPane.add(lblNewLabel);
 	}
 	private Point findScreenCenter() {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -184,7 +126,7 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 			}
 		}
 		dispose();
-		new RegDoente().setVisible(true);
+		new Janela_Login().setVisible(true);
 	}
 	@Override
 	public void run() {

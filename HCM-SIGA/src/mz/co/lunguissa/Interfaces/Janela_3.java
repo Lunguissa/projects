@@ -30,6 +30,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Janela_3 extends JFrame {
 
@@ -49,6 +51,7 @@ public class Janela_3 extends JFrame {
 	private JTextField textField_3;
 	private JTextField txtMasculino;
 	private JTextField textField_8;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -86,7 +89,7 @@ public class Janela_3 extends JFrame {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 		 
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -398,20 +401,24 @@ public class Janela_3 extends JFrame {
 		lblDiagnsticos.setBounds(92, 409, 152, 35);
 		panel.add(lblDiagnsticos);
 		
-		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(455, 297, 323, 91);
-		panel.add(scrollPane_2);
-		
-		JTextPane textPane_2 = new JTextPane();
-		scrollPane_2.setViewportView(textPane_2);
-		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(337, 297, 117, 91);
+		scrollPane_1.setBounds(337, 297, 441, 94);
 		panel.add(scrollPane_1);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setFont(new Font("Consolas", Font.PLAIN, 16));
-		scrollPane_1.setViewportView(textPane);
+		table = new JTable();
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{null, null},
+				{null, null},
+				{null, null},
+				{null, null},
+			},
+			new String[] {
+				"Nome do Medicamento", "Quantidade"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(140);
+		scrollPane_1.setViewportView(table);
 		
 		JButton button_3 = new JButton("Desistiu");
 		button_3.setFont(new Font("Consolas", Font.PLAIN, 17));
