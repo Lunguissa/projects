@@ -40,6 +40,12 @@ public class Doente
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
 	}
+	@Override
+	public String toString() {
+		return "Doente [numProcesso=" + numProcesso + ", nome=" + nome
+				+ ", apelido=" + apelido + ", dataNascimento=" + dataNascimento
+				+ ", sexo=" + sexo + "]";
+	}
 	
 	
 	

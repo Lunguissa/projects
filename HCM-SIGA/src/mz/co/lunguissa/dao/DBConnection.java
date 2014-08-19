@@ -13,6 +13,7 @@ public class DBConnection
 		String login = "sa";
 		String senha = "root123";
 		try {
+			
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(url, login, senha);
 			System.out.println("Done");

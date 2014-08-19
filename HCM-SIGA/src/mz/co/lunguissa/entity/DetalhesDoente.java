@@ -107,6 +107,12 @@ public class DetalhesDoente
 	public void setEnt_n_entidade(int ent_n_entidade) {
 		this.ent_n_entidade = ent_n_entidade;
 	}
+	@Override
+	public String toString() {
+		return "DetalhesDoente [numProcesso=" + numProcesso + ", data=" + data
+				+ ", hora=" + hora + ", morada=" + morada + ", cidade="
+				+ cidade + "]";
+	}
 	
 	
 	
