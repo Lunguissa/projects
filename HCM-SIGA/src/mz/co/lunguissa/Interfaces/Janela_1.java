@@ -36,6 +36,8 @@ import com.qt.datapicker.DatePicker;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Date;
 import java.util.Locale;
 
@@ -57,7 +59,7 @@ public class Janela_1 extends JFrame {
 	private JTextField txtNRAnalises;
 	private JTextField txtAcompanhante;
 	private JTable tblAnalises;
-
+	private boolean exists =false;
 	/**
 	 * Launch the application.
 	 */
@@ -78,6 +80,23 @@ public class Janela_1 extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_1() {
+		 UIManager.put("OptionPane.yesButtonText", "Sim");  
+         UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
+         UIManager.put("OptionPane.noButtonText", "Não");  
+         UIManager.put("OptionPane.okButtonText", "OK");  
+	    Locale.setDefault(new Locale("pt","PT"));  
+		addWindowListener(new WindowAdapter() {
+			@Override
+			  public void windowClosing(WindowEvent e) {  
+			
+                int i = JOptionPane.showConfirmDialog(Janela_1.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+              
+                if (i == JOptionPane.YES_OPTION) {  
+                dispose();  
+                } else {  
+                   setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }     } 
+		});
 		setTitle("HCM");
 		setResizable(false);
 		
@@ -94,7 +113,7 @@ public class Janela_1 extends JFrame {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 		 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -323,9 +342,11 @@ public class Janela_1 extends JFrame {
 		
 		JButton btnInserir = new JButton("Inserir");
 		btnInserir.addActionListener(new ActionListener() {
-			boolean exists =false;
+		
 			public void actionPerformed(ActionEvent e) {
+				exists=false;
 				DefaultTableModel modelo =(DefaultTableModel) tblAnalises.getModel();  
+				if(!(cmbAnalisePedidas.getSelectedIndex()==0)){
 				for (int i = 0; i < modelo.getRowCount(); i++) {
 					if(cmbAnalisePedidas.getSelectedItem().equals(modelo.getValueAt(i, 0)))
 							{
@@ -336,7 +357,7 @@ public class Janela_1 extends JFrame {
 					JOptionPane.showMessageDialog(null, "Pedido de Análise já existente na Tabela");
 				if(exists==false)
 				modelo.addRow(cmbAnalisePedidas.getSelectedObjects());
-				
+				}
 			}
 		});
 		btnInserir.setFont(new Font("Consolas", Font.PLAIN, 17));
@@ -389,6 +410,7 @@ public class Janela_1 extends JFrame {
 				cmbIsencao.setSelectedIndex(0);
 				cmbProveniencia.setSelectedIndex(0);
 				cmbAnalisePedidas.setSelectedIndex(0);
+				txtNRAnalises.setText(null);
 				tblAnalises.setModel(new DefaultTableModel(
 						new Object[][] {
 							

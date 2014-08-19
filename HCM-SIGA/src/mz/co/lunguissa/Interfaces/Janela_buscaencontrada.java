@@ -14,9 +14,12 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -29,6 +32,7 @@ import mz.co.lunguissa.Funcionalidades.point;
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
@@ -60,6 +64,24 @@ public class Janela_buscaencontrada extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_buscaencontrada() {
+		 UIManager.put("OptionPane.yesButtonText", "Sim");  
+         UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
+         UIManager.put("OptionPane.noButtonText", "Não");  
+         UIManager.put("OptionPane.okButtonText", "OK");  
+	    Locale.setDefault(new Locale("pt","PT"));  
+		addWindowListener(new WindowAdapter() {
+			@Override
+			  public void windowClosing(WindowEvent e) {  
+			
+                int i = JOptionPane.showConfirmDialog(Janela_buscaencontrada.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+              
+                if (i == JOptionPane.YES_OPTION) {  
+                	 dispose();  
+ 
+                } else {  
+                   setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }     } 
+		});
 		setTitle("HCM");
 		setResizable(false);
 		
@@ -76,7 +98,7 @@ public class Janela_buscaencontrada extends JFrame {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 		point.users.add("Usuario");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -143,7 +165,7 @@ public class Janela_buscaencontrada extends JFrame {
 		contentPane.add(label_27);
 
 		
-		 DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy");  
+		 DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy",new Locale("pt", "PT"));   
 	     data=dfmt.format(dataSistema);
 	     lblData.setText(data);
 	     

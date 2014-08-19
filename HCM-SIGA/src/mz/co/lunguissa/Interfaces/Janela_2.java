@@ -41,6 +41,8 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Janela_2 extends JFrame {
 
@@ -52,9 +54,9 @@ public class Janela_2 extends JFrame {
 	private JTextField txtAcompanhante;
 	private JTextField txtgrauParentesco;
 	private JTextField txtContactoAcompanhante;
-	private JTextField textField;
+	private JTextField txtNRAnalises;
 	private JTable tblAnalises;
-
+	private boolean exists =false;
 	/**
 	 * Launch the application.
 	 */
@@ -75,6 +77,24 @@ public class Janela_2 extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_2() {
+		 UIManager.put("OptionPane.yesButtonText", "Sim");  
+         UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
+         UIManager.put("OptionPane.noButtonText", "Não");  
+         UIManager.put("OptionPane.okButtonText", "OK");  
+	    Locale.setDefault(new Locale("pt","PT"));  
+		addWindowListener(new WindowAdapter() {
+			@Override
+			  public void windowClosing(WindowEvent e) {  
+			
+                int i = JOptionPane.showConfirmDialog(Janela_2.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+              
+                if (i == JOptionPane.YES_OPTION) {  
+                	 dispose();  
+
+                } else {  
+                   setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }     } 
+		});
 		setTitle("HCM");
 		setResizable(false);
 		
@@ -91,7 +111,7 @@ public class Janela_2 extends JFrame {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 		 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -161,12 +181,13 @@ public class Janela_2 extends JFrame {
 		txtMorada.setBounds(362, 249, 332, 30);
 		panel_1.add(txtMorada);
 		
-		JRadioButton radioButton = new JRadioButton("Feminino");
-		radioButton.setEnabled(false);
-		radioButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		radioButton.setBackground(Color.WHITE);
-		radioButton.setBounds(490, 158, 109, 30);
-		panel_1.add(radioButton);
+		final JRadioButton rbFemin = new JRadioButton("Feminino");
+		buttonGroup.add(rbFemin);
+		rbFemin.setEnabled(false);
+		rbFemin.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		rbFemin.setBackground(Color.WHITE);
+		rbFemin.setBounds(490, 158, 109, 30);
+		panel_1.add(rbFemin);
 		
 		JLabel label = new JLabel("Sexo:");
 		label.setForeground(Color.BLACK);
@@ -174,13 +195,14 @@ public class Janela_2 extends JFrame {
 		label.setBounds(69, 168, 283, 20);
 		panel_1.add(label);
 		
-		JRadioButton radioButton_1 = new JRadioButton("Masculino");
-		radioButton_1.setEnabled(false);
-		radioButton_1.setSelected(true);
-		radioButton_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		radioButton_1.setBackground(Color.WHITE);
-		radioButton_1.setBounds(362, 158, 109, 30);
-		panel_1.add(radioButton_1);
+		final JRadioButton rbMasc = new JRadioButton("Masculino");
+		buttonGroup.add(rbMasc);
+		rbMasc.setEnabled(false);
+		rbMasc.setSelected(true);
+		rbMasc.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		rbMasc.setBackground(Color.WHITE);
+		rbMasc.setBounds(362, 158, 109, 30);
+		panel_1.add(rbMasc);
 		
 		final JComboBox cmbIdade = new JComboBox();
 		cmbIdade.setEnabled(false);
@@ -224,11 +246,12 @@ public class Janela_2 extends JFrame {
 		panel_1.add(txtAcompanhante);
 		
 		JButton button = new JButton("Editar");
+		
 		button.setBackground(Color.WHITE);
 		button.setBounds(443, 469, 115, 48);
 		panel_1.add(button);
 		
-		JButton btnLimpar = new JButton("Limpar");
+		final JButton btnLimpar = new JButton("Limpar");
 		
 		btnLimpar.setEnabled(false);
 		btnLimpar.setBackground(Color.WHITE);
@@ -270,27 +293,27 @@ public class Janela_2 extends JFrame {
 		panel_2.setLayout(null);
 		tabbedPane.addTab("Situação de Saude", null, panel_2, null);
 		
-		JButton btnGravar = new JButton("Gravar");
+		final JButton btnGravar = new JButton("Gravar");
 		btnGravar.setFont(new Font("Consolas", Font.PLAIN, 17));
 		btnGravar.setEnabled(false);
 		btnGravar.setBackground(Color.WHITE);
 		btnGravar.setBounds(449, 447, 115, 48);
 		panel_2.add(btnGravar);
 		
-		JButton bntLimpar1 = new JButton("Limpar");
+		final JButton btnLimpar1 = new JButton("Limpar");
 		
-		bntLimpar1.setFont(new Font("Consolas", Font.PLAIN, 17));
-		bntLimpar1.setEnabled(false);
-		bntLimpar1.setBackground(Color.WHITE);
-		bntLimpar1.setBounds(578, 447, 115, 48);
-		panel_2.add(bntLimpar1);
+		btnLimpar1.setFont(new Font("Consolas", Font.PLAIN, 17));
+		btnLimpar1.setEnabled(false);
+		btnLimpar1.setBackground(Color.WHITE);
+		btnLimpar1.setBounds(578, 447, 115, 48);
+		panel_2.add(btnLimpar1);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField.setColumns(10);
-		textField.setBackground(Color.WHITE);
-		textField.setBounds(343, 354, 350, 30);
-		panel_2.add(textField);
+		txtNRAnalises = new JTextField();
+		txtNRAnalises.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtNRAnalises.setColumns(10);
+		txtNRAnalises.setBackground(Color.WHITE);
+		txtNRAnalises.setBounds(343, 354, 350, 30);
+		panel_2.add(txtNRAnalises);
 		
 		JLabel label_2 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
 		label_2.setForeground(Color.BLACK);
@@ -324,13 +347,13 @@ public class Janela_2 extends JFrame {
 		cmbIsencao.setBounds(343, 63, 217, 32);
 		panel_2.add(cmbIsencao);
 		
-		JButton button_6 = new JButton("Inserir");
+		final JButton btnInserir = new JButton("Inserir");
 		
-		button_6.setEnabled(false);
-		button_6.setFont(new Font("Consolas", Font.PLAIN, 17));
-		button_6.setBackground(Color.WHITE);
-		button_6.setBounds(592, 158, 101, 40);
-		panel_2.add(button_6);
+		btnInserir.setEnabled(false);
+		btnInserir.setFont(new Font("Consolas", Font.PLAIN, 17));
+		btnInserir.setBackground(Color.WHITE);
+		btnInserir.setBounds(592, 158, 101, 40);
+		panel_2.add(btnInserir);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(343, 209, 350, 134);
@@ -397,9 +420,12 @@ public class Janela_2 extends JFrame {
 		label_27.setIcon(new ImageIcon(Janela_2.class.getResource("/img/siga.PNG")));
 		label_27.setBounds(-24, -58, 1242, 824);
 		contentPane.add(label_27);
-		button_6.addActionListener(new ActionListener() {
-			boolean exists =false;
+		
+		btnInserir.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
+				exists=false;
+				if(!(cmbAnalisePedidas.getSelectedIndex()==0)){
 				DefaultTableModel modelo =(DefaultTableModel) tblAnalises.getModel();  
 				for (int i = 0; i < modelo.getRowCount(); i++) {
 					if(cmbAnalisePedidas.getSelectedItem().equals(modelo.getValueAt(i, 0)))
@@ -411,7 +437,7 @@ public class Janela_2 extends JFrame {
 					JOptionPane.showMessageDialog(null, "Pedido de Análise já existente na Tabela");
 				if(exists==false)
 				modelo.addRow(cmbAnalisePedidas.getSelectedObjects());
-				
+				}
 		}
 	});
 		btnLimpar.addActionListener(new ActionListener() {
@@ -427,10 +453,11 @@ public class Janela_2 extends JFrame {
 				
 			}
 		});
-		bntLimpar1.addActionListener(new ActionListener() {
+		btnLimpar1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cmbIsencao.setSelectedIndex(0);
 				cmbProveniencia.setSelectedIndex(0);
+				txtNRAnalises.setText(null);
 				cmbAnalisePedidas.setSelectedIndex(0);
 				tblAnalises.setModel(new DefaultTableModel(
 						new Object[][] {
@@ -440,6 +467,28 @@ public class Janela_2 extends JFrame {
 							"An\u00E1lises Pedidas"
 						}
 					));
+			}
+		});
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				txtnumProcesso.setEditable(true);;
+				txtNome.setEditable(true);
+				txtMorada.setEditable(true);
+				txtAcompanhante.setEditable(true);
+				txtgrauParentesco.setEditable(true);
+				txtContactoAcompanhante.setEditable(true);
+				cmbIdade.setEnabled(true);
+				cmbCidade.setEnabled(true);
+				cmbIsencao.setEnabled(true);
+				cmbProveniencia.setEnabled(true);
+				txtNRAnalises.setEditable(true);
+				cmbAnalisePedidas.setEnabled(true);
+				rbFemin.setEnabled(true);
+				rbMasc.setEnabled(true);
+				btnLimpar.setEnabled(true);
+				btnInserir.setEnabled(true);
+				btnGravar.setEnabled(true);
+				btnLimpar1.setEnabled(true);
 			}
 		});
 		setLocation(point.findScreenCenter(this));

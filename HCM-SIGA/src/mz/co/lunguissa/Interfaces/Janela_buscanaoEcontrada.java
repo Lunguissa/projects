@@ -14,9 +14,12 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -29,6 +32,7 @@ import mz.co.lunguissa.Funcionalidades.point;
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
@@ -60,6 +64,24 @@ public class Janela_buscanaoEcontrada extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_buscanaoEcontrada() {
+		 UIManager.put("OptionPane.yesButtonText", "Sim");  
+         UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
+         UIManager.put("OptionPane.noButtonText", "Não");  
+         UIManager.put("OptionPane.okButtonText", "OK");  
+	    Locale.setDefault(new Locale("pt","PT"));  
+		addWindowListener(new WindowAdapter() {
+			@Override
+			  public void windowClosing(WindowEvent e) {  
+			
+                int i = JOptionPane.showConfirmDialog(Janela_buscanaoEcontrada.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+              
+                if (i == JOptionPane.YES_OPTION) {  
+                	 dispose();  
+ 
+                } else {  
+                   setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }     } 
+		});
 		setTitle("HCM");
 		setResizable(false);
 		
@@ -76,7 +98,7 @@ public class Janela_buscanaoEcontrada extends JFrame {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
 		point.users.add("Usuario");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -107,27 +129,27 @@ public class Janela_buscanaoEcontrada extends JFrame {
 		
 		JLabel lblUser = new JLabel("<dynamic>");
 		lblUser.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblUser.setBounds(441, 514, 245, 30);
+		lblUser.setBounds(462, 514, 245, 30);
 		panel_1.add(lblUser);
 		
 		JLabel label_1 = new JLabel("Nome do Utilizador:");
 		label_1.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_1.setBounds(266, 514, 170, 30);
+		label_1.setBounds(287, 514, 170, 30);
 		panel_1.add(label_1);
 		
 		JLabel lblData = new JLabel("2 de August de 2014");
 		lblData.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblData.setBounds(266, 488, 170, 30);
+		lblData.setBounds(287, 488, 170, 30);
 		panel_1.add(lblData);
 		
 		JLabel label_3 = new JLabel("::");
 		label_3.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_3.setBounds(441, 488, 68, 30);
+		label_3.setBounds(462, 488, 68, 30);
 		panel_1.add(label_3);
 		
 		JLabel lblHora = new JLabel("07h:56m");
 		lblHora.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblHora.setBounds(463, 488, 96, 30);
+		lblHora.setBounds(484, 488, 96, 30);
 		panel_1.add(lblHora);
 	
 		
@@ -145,7 +167,7 @@ public class Janela_buscanaoEcontrada extends JFrame {
 		
 
 		
-		 DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy");  
+		 DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy",new Locale("pt", "PT"));  
 	     data=dfmt.format(dataSistema);
 	     lblData.setText(data);
 	     

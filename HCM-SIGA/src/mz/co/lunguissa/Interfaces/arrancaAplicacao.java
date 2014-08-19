@@ -38,6 +38,7 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 	 */
 	public JProgressBar progressBar;
 	private JLabel lblNewLabel_1;
+	private JLabel lblPowerdBySiga;
 	public static void main(String[] args) {
 		arrancaAplicacao sp = new arrancaAplicacao();
 		sp.setVisible(true);
@@ -78,9 +79,16 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 		lblDinamico.setFont(new Font("Rockwell Condensed", Font.PLAIN, 28));
 		contentPane.setLayout(null);
 		
+		lblPowerdBySiga = new JLabel("Desenvolvido Pela SIGA Em Parceria com LUNGUISSA");
+		lblPowerdBySiga.setForeground(new Color(0, 0, 51));
+		lblPowerdBySiga.setFont(new Font("Rockwell Condensed", Font.PLAIN, 15));
+		lblPowerdBySiga.setBackground(new Color(255, 250, 205));
+		lblPowerdBySiga.setBounds(424, 357, 267, 53);
+		contentPane.add(lblPowerdBySiga);
+		
 		lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(arrancaAplicacao.class.getResource("/img/fundosplash.PNG")));
-		lblNewLabel_1.setBounds(-42, -27, 780, 415);
+		lblNewLabel_1.setBounds(-42, -27, 780, 435);
 		contentPane.add(lblNewLabel_1);
 		contentPane.add(progressBar);
 		contentPane.add(lblSoft);

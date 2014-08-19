@@ -30,11 +30,15 @@ import mz.co.lunguissa.Funcionalidades.point;
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Janela_buscaprocesso extends JFrame {
 
@@ -64,6 +68,24 @@ public class Janela_buscaprocesso extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_buscaprocesso() {
+		 UIManager.put("OptionPane.yesButtonText", "Sim");  
+         UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
+         UIManager.put("OptionPane.noButtonText", "Não");  
+         UIManager.put("OptionPane.okButtonText", "OK");  
+	    Locale.setDefault(new Locale("pt","PT"));  
+		addWindowListener(new WindowAdapter() {
+			@Override
+			  public void windowClosing(WindowEvent e) {  
+			
+                int i = JOptionPane.showConfirmDialog(Janela_buscaprocesso.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+              
+                if (i == JOptionPane.YES_OPTION) {  
+                	 dispose();  
+
+                } else {  
+                   setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }     } 
+		});
 		setTitle("HCM");
 		setResizable(false);
 		
@@ -81,7 +103,7 @@ public class Janela_buscaprocesso extends JFrame {
 		}
 		
 		point.users.add("Usuario");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -113,17 +135,17 @@ public class Janela_buscaprocesso extends JFrame {
 		
 		JLabel lblData = new JLabel("2 de August de 2014");
 		lblData.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblData.setBounds(257, 488, 170, 30);
+		lblData.setBounds(292, 488, 170, 30);
 		panel_1.add(lblData);
 		
 		JLabel label_2 = new JLabel("::");
 		label_2.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_2.setBounds(432, 488, 68, 30);
+		label_2.setBounds(467, 488, 68, 30);
 		panel_1.add(label_2);
 		
 		JLabel lblUser = new JLabel("Abel Fabiao");
 		lblUser.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblUser.setBounds(432, 514, 245, 30);
+		lblUser.setBounds(467, 514, 245, 30);
 		panel_1.add(lblUser);
 		
 		textField = new JTextField();
@@ -135,12 +157,12 @@ public class Janela_buscaprocesso extends JFrame {
 		
 		JLabel label_4 = new JLabel("Nome do Utilizador:");
 		label_4.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_4.setBounds(257, 514, 170, 30);
+		label_4.setBounds(292, 514, 170, 30);
 		panel_1.add(label_4);
 		
 		JLabel lblHora = new JLabel("20:15");
 		lblHora.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblHora.setBounds(454, 488, 96, 30);
+		lblHora.setBounds(489, 488, 96, 30);
 		panel_1.add(lblHora);
 		
 		JButton btnNovoProcesso = new JButton("Novo Processo");

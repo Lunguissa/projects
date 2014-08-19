@@ -80,14 +80,16 @@ public class Janela_Menu extends JFrame {
          UIManager.put("OptionPane.noButtonText", "Não");  
          UIManager.put("OptionPane.okButtonText", "OK");  
 	    Locale.setDefault(new Locale("pt","PT"));  
+	    
 		addWindowListener(new WindowAdapter() {
 			@Override
 			  public void windowClosing(WindowEvent e) {  
-			
-                int i = JOptionPane.showConfirmDialog(null ,"Tem certeza que deseja sair?", "Saída",JOptionPane.YES_NO_OPTION); 
+				
+                int i = JOptionPane.showConfirmDialog(Janela_Menu.this ,"Tem certeza que deseja sair?", "Saída",JOptionPane.YES_NO_OPTION); 
               
                 if (i == JOptionPane.YES_OPTION) {  
-                    System.exit(0);  
+                	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                	  new Janela_Login().setVisible(true); 
                 } else {  
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }     } 
@@ -175,6 +177,7 @@ public class Janela_Menu extends JFrame {
 		JButton btnTraigem = new JButton("Traigem");
 		btnTraigem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new Janela_buscaprocessoTriagem().setVisible(true);
 			}
 		});
 		btnTraigem.setFont(new Font("Consolas", Font.PLAIN, 23));

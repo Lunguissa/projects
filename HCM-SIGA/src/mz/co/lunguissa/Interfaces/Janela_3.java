@@ -14,6 +14,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Locale;
 
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
@@ -27,6 +30,7 @@ import mz.co.lunguissa.Funcionalidades.point;
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
@@ -37,21 +41,22 @@ public class Janela_3 extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField txtTesteas;
-	private JTextField txtAgostinhoMavota;
-	private DateTextField textField_2;
-	private JTextField txtMaputo;
-	private JTextField txtMafalala;
-	private JTextField txtCeleste;
-	private JTextField txtMe;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField txtnumProcesso;
+	private JTextField txtNome;
+	private DateTextField txtData;
+	private JTextField txtCidade;
+	private JTextField txtMorada;
+	private JTextField txtNomeAcompanhante;
+	private JTextField txtGrauParentesco;
+	private JTextField txtContactoAcompanhante;
+	private JTextField txtNRAnalises;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField txtMasculino;
-	private JTextField textField_8;
+	private JTextField txtIsencao;
+	private JTextField txtProveniencia;
+	private JTextField txtSexo;
+	private JTextField txtIdade;
 	private JTable table;
+	private JTable tblAnalises;
 
 	/**
 	 * Launch the application.
@@ -73,6 +78,25 @@ public class Janela_3 extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_3() {
+		 UIManager.put("OptionPane.yesButtonText", "Sim");  
+         UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
+         UIManager.put("OptionPane.noButtonText", "Não");  
+         UIManager.put("OptionPane.okButtonText", "OK");  
+	    Locale.setDefault(new Locale("pt","PT"));  
+		addWindowListener(new WindowAdapter() {
+			@Override
+			  public void windowClosing(WindowEvent e) {  
+			
+                int i = JOptionPane.showConfirmDialog(Janela_3.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+              
+                if (i == JOptionPane.YES_OPTION) {  
+                	 dispose();  
+  
+                } else {  
+                   setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                }     } 
+		});
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("HCM");
 		setResizable(false);
 		
@@ -88,8 +112,6 @@ public class Janela_3 extends JFrame {
 		} catch (Exception e) {
 		    // If Nimbus is not available, you can set the GUI to another look and feel.
 		}
-		 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1193, 735);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 255));
@@ -111,35 +133,33 @@ public class Janela_3 extends JFrame {
 		lblNmeroDeProcesso.setBounds(69, 42, 283, 20);
 		panel_1.add(lblNmeroDeProcesso);
 		
-		txtTesteas = new JTextField();
-		txtTesteas.setEditable(false);
-		txtTesteas.setEnabled(false);
-		txtTesteas.setText("97654");
-		txtTesteas.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtTesteas.setColumns(10);
-		txtTesteas.setBackground(Color.WHITE);
-		txtTesteas.setBounds(362, 35, 216, 30);
-		panel_1.add(txtTesteas);
+		txtnumProcesso = new JTextField();
+		txtnumProcesso.setEditable(false);
+		txtnumProcesso.setEnabled(false);
+		txtnumProcesso.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtnumProcesso.setColumns(10);
+		txtnumProcesso.setBackground(Color.WHITE);
+		txtnumProcesso.setBounds(362, 35, 216, 30);
+		panel_1.add(txtnumProcesso);
 		
-		txtAgostinhoMavota = new JTextField();
-		txtAgostinhoMavota.setEditable(false);
-		txtAgostinhoMavota.setEnabled(false);
-		txtAgostinhoMavota.setText("Agostinho Mavota");
-		txtAgostinhoMavota.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtAgostinhoMavota.setColumns(10);
-		txtAgostinhoMavota.setBackground(Color.WHITE);
-		txtAgostinhoMavota.setBounds(362, 76, 332, 30);
-		panel_1.add(txtAgostinhoMavota);
+		txtNome = new JTextField();
+		txtNome.setEditable(false);
+		txtNome.setEnabled(false);
+		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtNome.setColumns(10);
+		txtNome.setBackground(Color.WHITE);
+		txtNome.setBounds(362, 76, 332, 30);
+		panel_1.add(txtNome);
 		
-		textField_2 = new DateTextField();
-		textField_2.setEnabled(false);
-		textField_2.repaint();
-		textField_2.setText("20/07/1991");
-		textField_2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_2.setColumns(10);
-		textField_2.setBackground(Color.WHITE);
-		textField_2.setBounds(362, 117, 216, 30);
-		panel_1.add(textField_2);
+		txtData = new DateTextField();
+		txtData.setEnabled(false);
+		txtData.repaint();
+		txtData.setText("");
+		txtData.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtData.setColumns(10);
+		txtData.setBackground(Color.WHITE);
+		txtData.setBounds(362, 117, 216, 30);
+		panel_1.add(txtData);
 		
 		JLabel lblDataDeNascimento = new JLabel("Data de Nascimento:");
 		lblDataDeNascimento.setForeground(Color.BLACK);
@@ -165,25 +185,23 @@ public class Janela_3 extends JFrame {
 		lblNReciboDas.setBounds(69, 290, 283, 35);
 		panel_1.add(lblNReciboDas);
 		
-		txtMaputo = new JTextField();
-		txtMaputo.setEditable(false);
-		txtMaputo.setEnabled(false);
-		txtMaputo.setText("Maputo");
-		txtMaputo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtMaputo.setColumns(10);
-		txtMaputo.setBackground(Color.WHITE);
-		txtMaputo.setBounds(361, 290, 332, 30);
-		panel_1.add(txtMaputo);
+		txtCidade = new JTextField();
+		txtCidade.setEditable(false);
+		txtCidade.setEnabled(false);
+		txtCidade.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtCidade.setColumns(10);
+		txtCidade.setBackground(Color.WHITE);
+		txtCidade.setBounds(361, 290, 332, 30);
+		panel_1.add(txtCidade);
 		
-		txtMafalala = new JTextField();
-		txtMafalala.setEditable(false);
-		txtMafalala.setEnabled(false);
-		txtMafalala.setText("Mafalala");
-		txtMafalala.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtMafalala.setColumns(10);
-		txtMafalala.setBackground(Color.WHITE);
-		txtMafalala.setBounds(362, 249, 332, 30);
-		panel_1.add(txtMafalala);
+		txtMorada = new JTextField();
+		txtMorada.setEditable(false);
+		txtMorada.setEnabled(false);
+		txtMorada.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtMorada.setColumns(10);
+		txtMorada.setBackground(Color.WHITE);
+		txtMorada.setBounds(362, 249, 332, 30);
+		panel_1.add(txtMorada);
 		
 		JLabel label = new JLabel("Sexo:");
 		label.setForeground(Color.BLACK);
@@ -209,45 +227,41 @@ public class Janela_3 extends JFrame {
 		lblGrauDeParentesco.setBounds(69, 377, 283, 35);
 		panel_1.add(lblGrauDeParentesco);
 		
-		txtMe = new JTextField();
-		txtMe.setEditable(false);
-		txtMe.setEnabled(false);
-		txtMe.setText("M\u00E3e");
-		txtMe.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtMe.setColumns(10);
-		txtMe.setBackground(Color.WHITE);
-		txtMe.setBounds(362, 378, 332, 30);
-		panel_1.add(txtMe);
+		txtGrauParentesco = new JTextField();
+		txtGrauParentesco.setEditable(false);
+		txtGrauParentesco.setEnabled(false);
+		txtGrauParentesco.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtGrauParentesco.setColumns(10);
+		txtGrauParentesco.setBackground(Color.WHITE);
+		txtGrauParentesco.setBounds(362, 378, 332, 30);
+		panel_1.add(txtGrauParentesco);
 		
-		txtCeleste = new JTextField();
-		txtCeleste.setEditable(false);
-		txtCeleste.setEnabled(false);
-		txtCeleste.setText("Celeste");
-		txtCeleste.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtCeleste.setColumns(10);
-		txtCeleste.setBackground(Color.WHITE);
-		txtCeleste.setBounds(362, 332, 332, 30);
-		panel_1.add(txtCeleste);
+		txtNomeAcompanhante = new JTextField();
+		txtNomeAcompanhante.setEditable(false);
+		txtNomeAcompanhante.setEnabled(false);
+		txtNomeAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtNomeAcompanhante.setColumns(10);
+		txtNomeAcompanhante.setBackground(Color.WHITE);
+		txtNomeAcompanhante.setBounds(362, 332, 332, 30);
+		panel_1.add(txtNomeAcompanhante);
 		
-		txtMasculino = new JTextField();
-		txtMasculino.setText("Masculino");
-		txtMasculino.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtMasculino.setEnabled(false);
-		txtMasculino.setEditable(false);
-		txtMasculino.setColumns(10);
-		txtMasculino.setBackground(Color.WHITE);
-		txtMasculino.setBounds(362, 158, 216, 30);
-		panel_1.add(txtMasculino);
+		txtSexo = new JTextField();
+		txtSexo.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtSexo.setEnabled(false);
+		txtSexo.setEditable(false);
+		txtSexo.setColumns(10);
+		txtSexo.setBackground(Color.WHITE);
+		txtSexo.setBounds(362, 158, 216, 30);
+		panel_1.add(txtSexo);
 		
-		textField_8 = new JTextField();
-		textField_8.setText(">14");
-		textField_8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_8.setEnabled(false);
-		textField_8.setEditable(false);
-		textField_8.setColumns(10);
-		textField_8.setBackground(Color.WHITE);
-		textField_8.setBounds(362, 203, 216, 30);
-		panel_1.add(textField_8);
+		txtIdade = new JTextField();
+		txtIdade.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtIdade.setEnabled(false);
+		txtIdade.setEditable(false);
+		txtIdade.setColumns(10);
+		txtIdade.setBackground(Color.WHITE);
+		txtIdade.setBounds(362, 203, 216, 30);
+		panel_1.add(txtIdade);
 		
 		JLabel lblContactoAcompanhante = new JLabel("Contacto do Acompanhante:");
 		lblContactoAcompanhante.setForeground(Color.BLACK);
@@ -255,15 +269,14 @@ public class Janela_3 extends JFrame {
 		lblContactoAcompanhante.setBounds(69, 423, 283, 35);
 		panel_1.add(lblContactoAcompanhante);
 		
-		textField_6 = new JTextField();
-		textField_6.setEditable(false);
-		textField_6.setEnabled(false);
-		textField_6.setText("82545783");
-		textField_6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_6.setColumns(10);
-		textField_6.setBackground(Color.WHITE);
-		textField_6.setBounds(362, 424, 332, 30);
-		panel_1.add(textField_6);
+		txtContactoAcompanhante = new JTextField();
+		txtContactoAcompanhante.setEditable(false);
+		txtContactoAcompanhante.setEnabled(false);
+		txtContactoAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtContactoAcompanhante.setColumns(10);
+		txtContactoAcompanhante.setBackground(Color.WHITE);
+		txtContactoAcompanhante.setBounds(362, 424, 332, 30);
+		panel_1.add(txtContactoAcompanhante);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Janela_3.class.getResource("/img/fundo.jpg")));
@@ -286,14 +299,14 @@ public class Janela_3 extends JFrame {
 		lblIsenoDePagamento.setBounds(119, 130, 260, 22);
 		panel_2.add(lblIsenoDePagamento);
 		
-		textField_7 = new JTextField();
-		textField_7.setEnabled(false);
-		textField_7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_7.setEditable(false);
-		textField_7.setColumns(10);
-		textField_7.setBackground(Color.WHITE);
-		textField_7.setBounds(403, 355, 332, 30);
-		panel_2.add(textField_7);
+		txtNRAnalises = new JTextField();
+		txtNRAnalises.setEnabled(false);
+		txtNRAnalises.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtNRAnalises.setEditable(false);
+		txtNRAnalises.setColumns(10);
+		txtNRAnalises.setBackground(Color.WHITE);
+		txtNRAnalises.setBounds(403, 355, 332, 30);
+		panel_2.add(txtNRAnalises);
 		
 		JLabel label_3 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
 		label_3.setForeground(Color.BLACK);
@@ -307,31 +320,37 @@ public class Janela_3 extends JFrame {
 		label_2.setBounds(119, 219, 252, 35);
 		panel_2.add(label_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_1.setEnabled(false);
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBackground(Color.WHITE);
-		textField_1.setBounds(404, 124, 216, 30);
-		panel_2.add(textField_1);
+		txtIsencao = new JTextField();
+		txtIsencao.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtIsencao.setEnabled(false);
+		txtIsencao.setEditable(false);
+		txtIsencao.setColumns(10);
+		txtIsencao.setBackground(Color.WHITE);
+		txtIsencao.setBounds(404, 124, 216, 30);
+		panel_2.add(txtIsencao);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		textField_3.setEnabled(false);
-		textField_3.setEditable(false);
-		textField_3.setColumns(10);
-		textField_3.setBackground(Color.WHITE);
-		textField_3.setBounds(404, 174, 216, 30);
-		panel_2.add(textField_3);
+		txtProveniencia = new JTextField();
+		txtProveniencia.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtProveniencia.setEnabled(false);
+		txtProveniencia.setEditable(false);
+		txtProveniencia.setColumns(10);
+		txtProveniencia.setBackground(Color.WHITE);
+		txtProveniencia.setBounds(404, 174, 216, 30);
+		panel_2.add(txtProveniencia);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
 		scrollPane_3.setBounds(404, 229, 331, 115);
 		panel_2.add(scrollPane_3);
 		
-		JTextPane textPane_3 = new JTextPane();
-		textPane_3.setEditable(false);
-		scrollPane_3.setViewportView(textPane_3);
+		tblAnalises = new JTable();
+		tblAnalises.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"An\u00E1lise Pedidas"
+			}
+		));
+		scrollPane_3.setViewportView(tblAnalises);
 		
 		JLabel label_30 = new JLabel("New label");
 		label_30.setLabelFor(panel_2);
