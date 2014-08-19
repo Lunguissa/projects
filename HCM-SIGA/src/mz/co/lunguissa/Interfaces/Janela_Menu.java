@@ -97,7 +97,7 @@ public class Janela_Menu extends JFrame {
                 	glass.setVisible(false); 
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }     } 
-		});
+		}); 
 		setTitle("HCM");
 		setResizable(false);
 		
