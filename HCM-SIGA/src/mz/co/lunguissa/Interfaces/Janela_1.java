@@ -214,7 +214,7 @@ public class Janela_1 extends JFrame {
 		final JComboBox cmbIdade = new JComboBox();
 		cmbIdade.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "< 1 m\u00EAs", "1-11m", "12m-5anos", "5-10anos", ">10 anos"}));
 		cmbIdade.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbIdade.setBounds(360, 199, 218, 32);
+		cmbIdade.setBounds(362, 195, 218, 32);
 		panel_1.add(cmbIdade);
 		
 		JLabel label_1 = new JLabel("Idade:");
@@ -263,7 +263,7 @@ public class Janela_1 extends JFrame {
 		final JComboBox cmbCidade = new JComboBox();
 		cmbCidade.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Maputo Cidade", "Maputo Provincia", "Outros"}));
 		cmbCidade.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbCidade.setBounds(360, 293, 218, 32);
+		cmbCidade.setBounds(362, 293, 218, 32);
 		panel_1.add(cmbCidade);
 		
 		txtContactoAcompanhante = new JTextField();

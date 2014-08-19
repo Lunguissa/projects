@@ -115,50 +115,51 @@ public class Janela_buscaencontrada extends JFrame {
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
+		JButton btnSeguinte = new JButton("OK");
+		btnSeguinte.setFont(new Font("Consolas", Font.PLAIN, 17));
+		btnSeguinte.setBackground(Color.WHITE);
+		btnSeguinte.setBounds(367, 405, 113, 30);
+		panel_1.add(btnSeguinte);
+		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(354, 154, 242, 199);
+		scrollPane.setBounds(309, 175, 242, 199);
 		panel_1.add(scrollPane);
 		
 		JTextPane txtpnOPacienteCom = new JTextPane();
-		txtpnOPacienteCom.setText("O paciente com o N\u00FAmero de Processo: \n"+numero+"\nN\u00E3o est\u00E1 registrado! Registe os dados do Paciente.\r\n");
-		txtpnOPacienteCom.setFont(new Font("Consolas", Font.PLAIN, 18));
 		txtpnOPacienteCom.setEditable(false);
+		txtpnOPacienteCom.setFont(new Font("Consolas", Font.PLAIN, 18));
+		txtpnOPacienteCom.setText("O paciente com o N\u00FAmero de Processo: \n"+numero+" \nj\u00E1 est\u00E1 registrado! Actualize os dados que forem necess\u00E1rios.");
 		scrollPane.setViewportView(txtpnOPacienteCom);
-		
-		JButton button = new JButton("OK");
-		button.setFont(new Font("Consolas", Font.PLAIN, 17));
-		button.setBackground(Color.WHITE);
-		button.setBounds(412, 384, 113, 30);
-		panel_1.add(button);
 		
 		JLabel lblUser = new JLabel("<dynamic>");
 		lblUser.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblUser.setBounds(441, 514, 245, 30);
+		lblUser.setBounds(462, 514, 245, 30);
 		panel_1.add(lblUser);
 		
 		JLabel label_1 = new JLabel("Nome do Utilizador:");
 		label_1.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_1.setBounds(266, 514, 170, 30);
+		label_1.setBounds(287, 514, 170, 30);
 		panel_1.add(label_1);
 		
 		JLabel lblData = new JLabel("2 de August de 2014");
 		lblData.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblData.setBounds(266, 488, 170, 30);
+		lblData.setBounds(287, 488, 170, 30);
 		panel_1.add(lblData);
 		
 		JLabel label_3 = new JLabel("::");
 		label_3.setFont(new Font("Consolas", Font.PLAIN, 14));
-		label_3.setBounds(441, 488, 68, 30);
+		label_3.setBounds(462, 488, 68, 30);
 		panel_1.add(label_3);
 		
 		JLabel lblHora = new JLabel("07h:56m");
 		lblHora.setFont(new Font("Consolas", Font.PLAIN, 14));
-		lblHora.setBounds(463, 488, 96, 30);
+		lblHora.setBounds(484, 488, 96, 30);
 		panel_1.add(lblHora);
+	
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(Janela_buscaencontrada.class.getResource("/img/fundo.jpg")));
-		lblNewLabel.setBounds(-3, -27, 840, 594);
+		lblNewLabel.setBounds(-3, -27, 840, 582);
 		panel_1.add(lblNewLabel);
 		
 		JLabel label_27 = new JLabel("");
@@ -167,9 +168,10 @@ public class Janela_buscaencontrada extends JFrame {
 		label_27.setBounds(-24, -58, 1242, 824);
 		
 		contentPane.add(label_27);
+		
 
 		
-		 DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy",new Locale("pt", "PT"));   
+		 DateFormat dfmt = new SimpleDateFormat("d 'de' MMMM 'de' yyyy",new Locale("pt", "PT"));  
 	     data=dfmt.format(dataSistema);
 	     lblData.setText(data);
 	     

@@ -284,6 +284,7 @@ public class Janela_2 extends JFrame {
 		panel_1.add(txtContactoAcompanhante);
 		
 		JDateChooser txtData = new JDateChooser();
+		txtData.setEnabled(false);
 		txtData.setLocale(new Locale("pt", "PT"));
 		txtData.setBounds(362, 117, 147, 35);
 		panel_1.add(txtData);
@@ -475,20 +476,20 @@ public class Janela_2 extends JFrame {
 		});
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtnumProcesso.setEditable(true);;
-				txtNome.setEditable(true);
+				//txtnumProcesso.setEditable(true);;
+				//txtNome.setEditable(true);
 				txtMorada.setEditable(true);
 				txtAcompanhante.setEditable(true);
 				txtgrauParentesco.setEditable(true);
 				txtContactoAcompanhante.setEditable(true);
-				cmbIdade.setEnabled(true);
+			//	cmbIdade.setEnabled(true);
 				cmbCidade.setEnabled(true);
 				cmbIsencao.setEnabled(true);
 				cmbProveniencia.setEnabled(true);
 				txtNRAnalises.setEditable(true);
 				cmbAnalisePedidas.setEnabled(true);
-				rbFemin.setEnabled(true);
-				rbMasc.setEnabled(true);
+		   //   rbFemin.setEnabled(true);
+	       //   rbMasc.setEnabled(true);
 				btnLimpar.setEnabled(true);
 				btnInserir.setEnabled(true);
 				btnGravar.setEnabled(true);
