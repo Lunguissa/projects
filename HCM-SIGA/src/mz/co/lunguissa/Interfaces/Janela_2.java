@@ -85,13 +85,17 @@ public class Janela_2 extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			  public void windowClosing(WindowEvent e) {  
-			
+
+			    BlockingGlassPane glass = new BlockingGlassPane();  
+			    setGlassPane(glass);  
+			    glass.setVisible(true);  
                 int i = JOptionPane.showConfirmDialog(Janela_2.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
               
                 if (i == JOptionPane.YES_OPTION) {  
                 	 dispose();  
 
                 } else {  
+                	glass.setVisible(false); 
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }     } 
 		});

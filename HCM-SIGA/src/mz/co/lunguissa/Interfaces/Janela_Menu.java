@@ -84,13 +84,17 @@ public class Janela_Menu extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			  public void windowClosing(WindowEvent e) {  
-				
+
+			    BlockingGlassPane glass = new BlockingGlassPane();  
+			    setGlassPane(glass);  
+			    glass.setVisible(true);  
                 int i = JOptionPane.showConfirmDialog(Janela_Menu.this ,"Tem certeza que deseja sair?", "Saída",JOptionPane.YES_NO_OPTION); 
               
                 if (i == JOptionPane.YES_OPTION) {  
                 	setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                 	  new Janela_Login().setVisible(true); 
                 } else {  
+                	glass.setVisible(false); 
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }     } 
 		});

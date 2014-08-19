@@ -76,12 +76,16 @@ public class Janela_Login extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			  public void windowClosing(WindowEvent e) {  
-			
+
+			    BlockingGlassPane glass = new BlockingGlassPane();  
+			    setGlassPane(glass);  
+			    glass.setVisible(true);  
                 int i = JOptionPane.showConfirmDialog(Janela_Login.this,"Tem certeza que deseja sair?", "Saída",JOptionPane.YES_NO_OPTION); 
               
                 if (i == JOptionPane.YES_OPTION) {  
                     System.exit(0);  
                 } else {  
+                	glass.setVisible(false); 
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }     } 
 		});

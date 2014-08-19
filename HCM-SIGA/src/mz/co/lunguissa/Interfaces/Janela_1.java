@@ -89,11 +89,15 @@ public class Janela_1 extends JFrame {
 			@Override
 			  public void windowClosing(WindowEvent e) {  
 			
+			    BlockingGlassPane glass = new BlockingGlassPane();  
+			    setGlassPane(glass);  
+			    glass.setVisible(true);  
                 int i = JOptionPane.showConfirmDialog(Janela_1.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
               
                 if (i == JOptionPane.YES_OPTION) {  
                 dispose();  
                 } else {  
+                	glass.setVisible(false); 
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 }     } 
 		});
@@ -329,6 +333,11 @@ public class Janela_1 extends JFrame {
 		panel_2.add(label_2);
 		
 		JButton btnGravar = new JButton("Gravar");
+		btnGravar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnGravar.setFont(new Font("Consolas", Font.PLAIN, 17));
 		btnGravar.setBackground(Color.WHITE);
 		btnGravar.setBounds(441, 453, 115, 48);
@@ -424,3 +433,5 @@ public class Janela_1 extends JFrame {
 		setLocation(point.findScreenCenter(this));
 	}
 }
+
+
