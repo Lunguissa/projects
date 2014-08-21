@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 public class point {
 
 	public static ArrayList<String> users = new ArrayList<String>();
+	public static ArrayList<String> processos = new ArrayList<String>();
 	
 	public static Point findScreenCenter(JFrame frame) {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

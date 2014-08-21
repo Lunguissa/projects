@@ -39,8 +39,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Toolkit;
 
-public class Janela_buscaprocesso extends JFrame {
+public class Janela_buscaprocessoTriagem extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -55,7 +56,7 @@ public class Janela_buscaprocesso extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Janela_buscaprocesso frame = new Janela_buscaprocesso();
+					Janela_buscaprocessoTriagem frame = new Janela_buscaprocessoTriagem();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +68,8 @@ public class Janela_buscaprocesso extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Janela_buscaprocesso() {
+	public Janela_buscaprocessoTriagem() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Janela_buscaprocessoTriagem.class.getResource("/img/atendimento.png")));
 		 UIManager.put("OptionPane.yesButtonText", "Sim");  
          UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
          UIManager.put("OptionPane.noButtonText", "Não");  
@@ -80,11 +82,10 @@ public class Janela_buscaprocesso extends JFrame {
 			    BlockingGlassPane glass = new BlockingGlassPane();  
 			    setGlassPane(glass);  
 			    glass.setVisible(true);  
-                int i = JOptionPane.showConfirmDialog(Janela_buscaprocesso.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+                int i = JOptionPane.showConfirmDialog(Janela_buscaprocessoTriagem.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
               
                 if (i == JOptionPane.YES_OPTION) {  
                 	 dispose();  
-
                 } else {  
                 	glass.setVisible(false); 
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -126,7 +127,7 @@ public class Janela_buscaprocesso extends JFrame {
 				
 			}
 		});
-		btnSeguinte.setFont(new Font("Consolas", Font.PLAIN, 17));
+		btnSeguinte.setFont(new Font("Consolas", Font.PLAIN, 18));
 		btnSeguinte.setBackground(Color.WHITE);
 		btnSeguinte.setBounds(449, 259, 155, 37);
 		panel_1.add(btnSeguinte);
@@ -164,32 +165,20 @@ public class Janela_buscaprocesso extends JFrame {
 		label_4.setBounds(292, 514, 170, 30);
 		panel_1.add(label_4);
 		
-		JLabel lblHora = new JLabel("20:15");
+		JLabelTimer lblHora = new JLabelTimer();
 		lblHora.setFont(new Font("Consolas", Font.PLAIN, 14));
 		lblHora.setBounds(489, 488, 96, 30);
 		panel_1.add(lblHora);
-		
-		JButton btnNovoProcesso = new JButton("Novo Processo");
-		btnNovoProcesso.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new Janela_1().setVisible(true);
-			}
-		});
-		btnNovoProcesso.setFont(new Font("Consolas", Font.PLAIN, 17));
-		btnNovoProcesso.setBackground(Color.WHITE);
-		btnNovoProcesso.setBounds(449, 307, 155, 37);
-		panel_1.add(btnNovoProcesso);
 	
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Janela_buscaprocesso.class.getResource("/img/fundo.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(Janela_buscaprocessoTriagem.class.getResource("/img/fundo.jpg")));
 		lblNewLabel.setBounds(-3, -27, 840, 582);
 		panel_1.add(lblNewLabel);
 		
 		JLabel label_27 = new JLabel("");
 		label_27.setLabelFor(contentPane);
-		label_27.setIcon(new ImageIcon(Janela_buscaprocesso.class.getResource("/img/siga.PNG")));
+		label_27.setIcon(new ImageIcon(Janela_buscaprocessoTriagem.class.getResource("/img/siga.PNG")));
 		label_27.setBounds(-24, -58, 1242, 824);
 		contentPane.add(label_27);
 		
@@ -202,7 +191,7 @@ public class Janela_buscaprocesso extends JFrame {
 	     horas=timeFormat.format(dataSistema);
 	     lblHora.setText(horas);
 	    // user=point.users.get(0);
-	     lblUser.setText("Usuario");
+	     lblUser.setText(point.users.get(0));
 		setLocation(point.findScreenCenter(this));
 	}
 }

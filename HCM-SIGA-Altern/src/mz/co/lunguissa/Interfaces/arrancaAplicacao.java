@@ -39,6 +39,7 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 	public JProgressBar progressBar;
 	private JLabel lblNewLabel_1;
 	private JLabel lblPowerdBySiga;
+	
 	public static void main(String[] args) {
 		arrancaAplicacao sp = new arrancaAplicacao();
 		sp.setVisible(true);
@@ -48,7 +49,8 @@ public class arrancaAplicacao extends JFrame implements Runnable {
 	 * Create the frame.
 	 */
 	public arrancaAplicacao() {
-		super("Conservatória 1.0");
+		super("HCM_SIGA_LUNGUISSA_1.0");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(arrancaAplicacao.class.getResource("/img/logo.jpg")));
 		setTitle("HCM");
 		setType(Type.UTILITY);
 		setResizable(false);

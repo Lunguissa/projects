@@ -15,7 +15,6 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
@@ -23,41 +22,40 @@ import javax.swing.JButton;
 import javax.swing.UIManager;
 
 import mz.co.lunguissa.Funcionalidades.DateTextField;
-import mz.co.lunguissa.Funcionalidades.ObservingTextField;
 import mz.co.lunguissa.Funcionalidades.point;
 
 import javax.swing.ImageIcon;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
+import javax.swing.JCheckBox;
 
-import com.qt.datapicker.DatePicker;
+import com.toedter.calendar.JDateChooser;
+
+import java.util.Locale;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.Date;
-import java.util.Locale;
+import java.awt.Toolkit;
 
-import com.toedter.calendar.JDateChooser;
-
-import javax.swing.JCheckBox;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
-public class Janela_1 extends JFrame {
+public class Janela_2 extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtnumProcesso;
 	private JTextField txtNome;
 	private JTextField txtMorada;
+	private JTextField txtAcompanhante;
 	private JTextField txtgrauParentesco;
 	private JTextField txtContactoAcompanhante;
 	private JTextField txtNRAnalises;
-	private JTextField txtAcompanhante;
 	private JTable tblAnalises;
 	private boolean exists =false;
 	/**
@@ -67,7 +65,7 @@ public class Janela_1 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Janela_1 frame = new Janela_1();
+					Janela_2 frame = new Janela_2();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,7 +77,8 @@ public class Janela_1 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Janela_1() {
+	public Janela_2() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Janela_2.class.getResource("/img/atendimento.png")));
 		 UIManager.put("OptionPane.yesButtonText", "Sim");  
          UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
          UIManager.put("OptionPane.noButtonText", "Não");  
@@ -88,14 +87,15 @@ public class Janela_1 extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			  public void windowClosing(WindowEvent e) {  
-			
+
 			    BlockingGlassPane glass = new BlockingGlassPane();  
 			    setGlassPane(glass);  
 			    glass.setVisible(true);  
-                int i = JOptionPane.showConfirmDialog(Janela_1.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
+                int i = JOptionPane.showConfirmDialog(Janela_2.this ,"Deseja voltar ao Menu Principal?", "Saída",JOptionPane.YES_NO_OPTION); 
               
                 if (i == JOptionPane.YES_OPTION) {  
-                dispose();  
+                	 dispose();  
+
                 } else {  
                 	glass.setVisible(false); 
                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -133,12 +133,6 @@ public class Janela_1 extends JFrame {
 		tabbedPane.addTab("Informação do Doente", null, panel_1, null);
 		panel_1.setLayout(null);
 		
-		JButton button = new JButton("Limpar");
-		
-		button.setBackground(Color.WHITE);
-		button.setBounds(579, 469, 115, 48);
-		panel_1.add(button);
-		
 		JLabel lblNmeroDeProcesso = new JLabel("N\u00FAmero de Processo:");
 		lblNmeroDeProcesso.setForeground(Color.BLACK);
 		lblNmeroDeProcesso.setFont(new Font("Consolas", Font.PLAIN, 20));
@@ -146,14 +140,16 @@ public class Janela_1 extends JFrame {
 		panel_1.add(lblNmeroDeProcesso);
 		
 		txtnumProcesso = new JTextField();
-		txtnumProcesso.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtnumProcesso.setEditable(false);
+		txtnumProcesso.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtnumProcesso.setColumns(10);
 		txtnumProcesso.setBackground(Color.WHITE);
 		txtnumProcesso.setBounds(362, 35, 216, 30);
 		panel_1.add(txtnumProcesso);
 		
 		txtNome = new JTextField();
-		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtNome.setEditable(false);
+		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtNome.setColumns(10);
 		txtNome.setBackground(Color.WHITE);
 		txtNome.setBounds(362, 76, 332, 30);
@@ -184,18 +180,20 @@ public class Janela_1 extends JFrame {
 		panel_1.add(lblNReciboDas);
 		
 		txtMorada = new JTextField();
-		txtMorada.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtMorada.setEditable(false);
+		txtMorada.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtMorada.setColumns(10);
 		txtMorada.setBackground(Color.WHITE);
 		txtMorada.setBounds(362, 249, 332, 30);
 		panel_1.add(txtMorada);
 		
-		JRadioButton rbtFemin = new JRadioButton("Feminino");
-		buttonGroup.add(rbtFemin);
-		rbtFemin.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		rbtFemin.setBackground(Color.WHITE);
-		rbtFemin.setBounds(490, 158, 109, 30);
-		panel_1.add(rbtFemin);
+		final JRadioButton rbFemin = new JRadioButton("Feminino");
+		buttonGroup.add(rbFemin);
+		rbFemin.setEnabled(false);
+		rbFemin.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		rbFemin.setBackground(Color.WHITE);
+		rbFemin.setBounds(490, 158, 109, 30);
+		panel_1.add(rbFemin);
 		
 		JLabel label = new JLabel("Sexo:");
 		label.setForeground(Color.BLACK);
@@ -203,18 +201,20 @@ public class Janela_1 extends JFrame {
 		label.setBounds(69, 168, 283, 20);
 		panel_1.add(label);
 		
-		JRadioButton rbtMasc = new JRadioButton("Masculino");
-		buttonGroup.add(rbtMasc);
-		rbtMasc.setSelected(true);
-		rbtMasc.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		rbtMasc.setBackground(Color.WHITE);
-		rbtMasc.setBounds(362, 158, 109, 30);
-		panel_1.add(rbtMasc);
+		final JRadioButton rbMasc = new JRadioButton("Masculino");
+		buttonGroup.add(rbMasc);
+		rbMasc.setEnabled(false);
+		rbMasc.setSelected(true);
+		rbMasc.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		rbMasc.setBackground(Color.WHITE);
+		rbMasc.setBounds(362, 158, 109, 30);
+		panel_1.add(rbMasc);
 		
 		final JComboBox cmbIdade = new JComboBox();
+		cmbIdade.setEnabled(false);
 		cmbIdade.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "< 1 m\u00EAs", "1-11m", "12m-5anos", "5-10anos", ">10 anos"}));
 		cmbIdade.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbIdade.setBounds(362, 195, 218, 32);
+		cmbIdade.setBounds(360, 199, 218, 32);
 		panel_1.add(cmbIdade);
 		
 		JLabel label_1 = new JLabel("Idade:");
@@ -236,18 +236,40 @@ public class Janela_1 extends JFrame {
 		panel_1.add(lblGrauDeParentesco);
 		
 		txtgrauParentesco = new JTextField();
-		txtgrauParentesco.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtgrauParentesco.setEditable(false);
+		txtgrauParentesco.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtgrauParentesco.setColumns(10);
 		txtgrauParentesco.setBackground(Color.WHITE);
 		txtgrauParentesco.setBounds(362, 378, 332, 30);
 		panel_1.add(txtgrauParentesco);
 		
 		txtAcompanhante = new JTextField();
-		txtAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtAcompanhante.setEditable(false);
+		txtAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtAcompanhante.setColumns(10);
 		txtAcompanhante.setBackground(Color.WHITE);
 		txtAcompanhante.setBounds(362, 332, 332, 30);
 		panel_1.add(txtAcompanhante);
+		
+		JButton button = new JButton("Editar");
+		
+		button.setBackground(Color.WHITE);
+		button.setBounds(443, 469, 115, 48);
+		panel_1.add(button);
+		
+		final JButton btnLimpar = new JButton("Limpar");
+		
+		btnLimpar.setEnabled(false);
+		btnLimpar.setBackground(Color.WHITE);
+		btnLimpar.setBounds(579, 469, 115, 48);
+		panel_1.add(btnLimpar);
+		
+		final JComboBox cmbCidade = new JComboBox();
+		cmbCidade.setEnabled(false);
+		cmbCidade.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Maputo Cidade", "Maputo Provincia", "Outros"}));
+		cmbCidade.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		cmbCidade.setBounds(360, 290, 218, 32);
+		panel_1.add(cmbCidade);
 		
 		JLabel lblContactoAcompanhante = new JLabel("Contacto do Acompanhante:");
 		lblContactoAcompanhante.setForeground(Color.BLACK);
@@ -255,26 +277,22 @@ public class Janela_1 extends JFrame {
 		lblContactoAcompanhante.setBounds(69, 423, 283, 35);
 		panel_1.add(lblContactoAcompanhante);
 		
-		JDateChooser txtData = new JDateChooser();
-		txtData.setLocale(new Locale("pt", "PT"));
-		txtData.setBounds(362, 117, 147, 35);
-		panel_1.add(txtData);
-		
-		final JComboBox cmbCidade = new JComboBox();
-		cmbCidade.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Maputo Cidade", "Maputo Provincia", "Outros"}));
-		cmbCidade.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbCidade.setBounds(362, 293, 218, 32);
-		panel_1.add(cmbCidade);
-		
 		txtContactoAcompanhante = new JTextField();
-		txtContactoAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtContactoAcompanhante.setEditable(false);
+		txtContactoAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN, 19));
 		txtContactoAcompanhante.setColumns(10);
 		txtContactoAcompanhante.setBackground(Color.WHITE);
 		txtContactoAcompanhante.setBounds(362, 424, 332, 30);
 		panel_1.add(txtContactoAcompanhante);
 		
+		JDateChooser txtData = new JDateChooser();
+		txtData.setEnabled(false);
+		txtData.setLocale(new Locale("pt", "PT"));
+		txtData.setBounds(362, 117, 147, 35);
+		panel_1.add(txtData);
+		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(Janela_1.class.getResource("/img/fundo.jpg")));
+		lblNewLabel.setIcon(new ImageIcon(Janela_2.class.getResource("/img/fundo.jpg")));
 		lblNewLabel.setBounds(-3, -27, 840, 559);
 		panel_1.add(lblNewLabel);
 		
@@ -282,100 +300,70 @@ public class Janela_1 extends JFrame {
 		panel_2.setLayout(null);
 		tabbedPane.addTab("Situação de Saude", null, panel_2, null);
 		
-		JButton button_2 = new JButton("Limpar");
+		final JButton btnGravar = new JButton("Gravar");
+		btnGravar.setFont(new Font("Consolas", Font.PLAIN, 17));
+		btnGravar.setEnabled(false);
+		btnGravar.setBackground(Color.WHITE);
+		btnGravar.setBounds(449, 447, 115, 48);
+		panel_2.add(btnGravar);
 		
-		button_2.setFont(new Font("Consolas", Font.PLAIN, 17));
-		button_2.setBackground(Color.WHITE);
-		button_2.setBounds(570, 453, 115, 48);
-		panel_2.add(button_2);
+		final JButton btnLimpar1 = new JButton("Limpar");
 		
-		JLabel lblProviniencia_1 = new JLabel("Proveni\u00EAncia :");
-		lblProviniencia_1.setForeground(Color.BLACK);
-		lblProviniencia_1.setFont(new Font("Consolas", Font.PLAIN, 20));
-		lblProviniencia_1.setBounds(76, 115, 183, 35);
-		panel_2.add(lblProviniencia_1);
-		
-		final JComboBox cmbIsencao = new JComboBox();
-		cmbIsencao.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Transfer\u00EAncia do Estado", "Asma", "Dador de Sange", "Antigos  Combatentes", "Sem Recurso, Pessoal", "Outra"}));
-		cmbIsencao.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbIsencao.setBounds(359, 65, 217, 32);
-		panel_2.add(cmbIsencao);
-		
-		JLabel lblIsenoDePagamento = new JLabel("Isen\u00E7\u00E3o de Pagamento:");
-		lblIsenoDePagamento.setForeground(Color.BLACK);
-		lblIsenoDePagamento.setFont(new Font("Consolas", Font.PLAIN, 20));
-		lblIsenoDePagamento.setBounds(75, 71, 260, 22);
-		panel_2.add(lblIsenoDePagamento);
-		
-		final JComboBox cmbProveniencia = new JComboBox();
-		cmbProveniencia.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Casa", "HG Mavalane", "HG Chamanculo", "HGJM", "HG Infulene", "CS Sa\u00FAde da Cidade", "CS da Prov\u00EDncia", "Gaza", "Inhambane", "Outras Prov\u00EDncias", "Clin\u00EDcas do HCM", "US Privadas"}));
-		cmbProveniencia.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbProveniencia.setBounds(360, 111, 216, 32);
-		panel_2.add(cmbProveniencia);
+		btnLimpar1.setFont(new Font("Consolas", Font.PLAIN, 17));
+		btnLimpar1.setEnabled(false);
+		btnLimpar1.setBackground(Color.WHITE);
+		btnLimpar1.setBounds(578, 447, 115, 48);
+		panel_2.add(btnLimpar1);
 		
 		txtNRAnalises = new JTextField();
 		txtNRAnalises.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		txtNRAnalises.setColumns(10);
 		txtNRAnalises.setBackground(Color.WHITE);
-		txtNRAnalises.setBounds(359, 339, 350, 30);
+		txtNRAnalises.setBounds(343, 354, 350, 30);
 		panel_2.add(txtNRAnalises);
 		
-		JLabel label_3 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
-		label_3.setForeground(Color.BLACK);
-		label_3.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_3.setBounds(76, 339, 267, 35);
-		panel_2.add(label_3);
-		
-		JLabel label_2 = new JLabel("An\u00E1lises Pedidas:");
+		JLabel label_2 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
 		label_2.setForeground(Color.BLACK);
 		label_2.setFont(new Font("Consolas", Font.PLAIN, 20));
-		label_2.setBounds(75, 160, 252, 35);
+		label_2.setBounds(54, 354, 267, 35);
 		panel_2.add(label_2);
 		
-		JButton btnGravar = new JButton("Gravar");
-		btnGravar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
-		btnGravar.setFont(new Font("Consolas", Font.PLAIN, 17));
-		btnGravar.setBackground(Color.WHITE);
-		btnGravar.setBounds(441, 453, 115, 48);
-		panel_2.add(btnGravar);
+		JLabel label_3 = new JLabel("An\u00E1lises Pedidas:");
+		label_3.setForeground(Color.BLACK);
+		label_3.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_3.setBounds(54, 158, 252, 35);
+		panel_2.add(label_3);
 		
-	final	JComboBox cmbAnalisePedidas = new JComboBox();
-		cmbAnalisePedidas.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "HTZ", "HIV", "RX", "Urina", "Bioquimica", "Hemograma", "Outras"}));
-		cmbAnalisePedidas.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbAnalisePedidas.setBounds(360, 163, 216, 32);
-		panel_2.add(cmbAnalisePedidas);
+		JLabel label_6 = new JLabel("Proveni\u00EAncia :");
+		label_6.setForeground(Color.BLACK);
+		label_6.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_6.setBounds(55, 113, 183, 35);
+		panel_2.add(label_6);
 		
-		JButton btnInserir = new JButton("Inserir");
-		btnInserir.addActionListener(new ActionListener() {
+		final JComboBox cmbProveniencia = new JComboBox();
+		cmbProveniencia.setEnabled(false);
+		cmbProveniencia.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Casa", "HG Mavalane", "HG Chamanculo", "HGJM", "HG Infulene", "CS Sa\u00FAde da Cidade", "CS da Prov\u00EDncia", "Gaza", "Inhambane", "Outras Prov\u00EDncias", "Clin\u00EDcas do HCM", "US Privadas"}));
+		cmbProveniencia.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		cmbProveniencia.setBounds(343, 113, 216, 32);
+		panel_2.add(cmbProveniencia);
 		
-			public void actionPerformed(ActionEvent e) {
-				exists=false;
-				DefaultTableModel modelo =(DefaultTableModel) tblAnalises.getModel();  
-				if(!(cmbAnalisePedidas.getSelectedIndex()==0)){
-				for (int i = 0; i < modelo.getRowCount(); i++) {
-					if(cmbAnalisePedidas.getSelectedItem().equals(modelo.getValueAt(i, 0)))
-							{
-						exists=true;
-							}
-				}
-				if(exists==true)
-					JOptionPane.showMessageDialog(null, "Pedido de Análise já existente na Tabela");
-				if(exists==false)
-				modelo.addRow(cmbAnalisePedidas.getSelectedObjects());
-				}
-			}
-		});
+		final JComboBox cmbIsencao = new JComboBox();
+		cmbIsencao.setEnabled(false);
+		cmbIsencao.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "Transfer\u00EAncia do Estado", "Asma", "Dador de Sange", "Antigos  Combatentes", "Sem Recurso, Pessoal", "Outra"}));
+		cmbIsencao.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		cmbIsencao.setBounds(343, 63, 217, 32);
+		panel_2.add(cmbIsencao);
+		
+		final JButton btnInserir = new JButton("Inserir");
+		
+		btnInserir.setEnabled(false);
 		btnInserir.setFont(new Font("Consolas", Font.PLAIN, 17));
 		btnInserir.setBackground(Color.WHITE);
-		btnInserir.setBounds(608, 160, 101, 40);
+		btnInserir.setBounds(592, 158, 101, 40);
 		panel_2.add(btnInserir);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(359, 206, 350, 122);
+		scrollPane.setBounds(343, 209, 350, 134);
 		panel_2.add(scrollPane);
 		
 		tblAnalises = new JTable();
@@ -388,19 +376,78 @@ public class Janela_1 extends JFrame {
 		));
 		scrollPane.setViewportView(tblAnalises);
 		
+		final JComboBox cmbAnalisePedidas = new JComboBox();
+		cmbAnalisePedidas.setEnabled(false);
+		cmbAnalisePedidas.setModel(new DefaultComboBoxModel(new String[] {"Escolha uma Opcao:", "HTZ", "HIV", "RX", "Urina", "Bioquimica", "Hemograma", "Outras"}));
+		cmbAnalisePedidas.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		cmbAnalisePedidas.setBounds(344, 161, 216, 32);
+		panel_2.add(cmbAnalisePedidas);
+		
+		JLabel label_7 = new JLabel("Isen\u00E7\u00E3o de Pagamento:");
+		label_7.setForeground(Color.BLACK);
+		label_7.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_7.setBounds(54, 69, 260, 22);
+		panel_2.add(label_7);
+		
 		JLabel label_30 = new JLabel("New label");
 		label_30.setLabelFor(panel_2);
-		label_30.setIcon(new ImageIcon(Janela_1.class.getResource("/img/fundo.jpg")));
-		label_30.setBounds(-3, -21, 975, 560);
+		label_30.setIcon(new ImageIcon(Janela_2.class.getResource("/img/fundo.jpg")));
+		label_30.setBounds(-14, -22, 975, 560);
 		panel_2.add(label_30);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		tabbedPane.addTab("Associar Senha", null, panel, null);
+		
+		JButton button_1 = new JButton("Associar Doente A Senha");
+		button_1.setFont(new Font("Consolas", Font.PLAIN, 17));
+		button_1.setBackground(Color.WHITE);
+		button_1.setBounds(419, 33, 247, 43);
+		panel.add(button_1);
+		
+		JLabel label_4 = new JLabel("Senha :");
+		label_4.setForeground(Color.BLACK);
+		label_4.setFont(new Font("Consolas", Font.PLAIN, 20));
+		label_4.setBounds(102, 41, 104, 35);
+		panel.add(label_4);
+		
+		JComboBox comboBox_3 = new JComboBox();
+		comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"Escolha a Senha:", "A1", "B1"}));
+		comboBox_3.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		comboBox_3.setBounds(208, 34, 186, 42);
+		panel.add(comboBox_3);
+		
+		JLabel label_5 = new JLabel("New label");
+		label_5.setIcon(new ImageIcon(Janela_2.class.getResource("/img/fundo.jpg")));
+		label_5.setBounds(-3, -11, 975, 550);
+		panel.add(label_5);
 		
 		JLabel label_27 = new JLabel("");
 		label_27.setLabelFor(contentPane);
-		label_27.setIcon(new ImageIcon(Janela_1.class.getResource("/img/siga.PNG")));
+		label_27.setIcon(new ImageIcon(Janela_2.class.getResource("/img/siga.PNG")));
 		label_27.setBounds(-24, -58, 1242, 824);
 		contentPane.add(label_27);
 		
-		button.addActionListener(new ActionListener() {
+		btnInserir.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				exists=false;
+				if(!(cmbAnalisePedidas.getSelectedIndex()==0)){
+				DefaultTableModel modelo =(DefaultTableModel) tblAnalises.getModel();  
+				for (int i = 0; i < modelo.getRowCount(); i++) {
+					if(cmbAnalisePedidas.getSelectedItem().equals(modelo.getValueAt(i, 0)))
+							{
+						exists=true;
+							}
+				}
+				if(exists==true)
+					JOptionPane.showMessageDialog(null, "Pedido de Análise já existente na Tabela");
+				if(exists==false)
+				modelo.addRow(cmbAnalisePedidas.getSelectedObjects());
+				}
+		}
+	});
+		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				txtnumProcesso.setText(null);
 				txtNome.setText(null);
@@ -413,13 +460,12 @@ public class Janela_1 extends JFrame {
 				
 			}
 		});
-		
-		button_2.addActionListener(new ActionListener() {
+		btnLimpar1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cmbIsencao.setSelectedIndex(0);
 				cmbProveniencia.setSelectedIndex(0);
-				cmbAnalisePedidas.setSelectedIndex(0);
 				txtNRAnalises.setText(null);
+				cmbAnalisePedidas.setSelectedIndex(0);
 				tblAnalises.setModel(new DefaultTableModel(
 						new Object[][] {
 							
@@ -430,8 +476,28 @@ public class Janela_1 extends JFrame {
 					));
 			}
 		});
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//txtnumProcesso.setEditable(true);;
+				//txtNome.setEditable(true);
+				txtMorada.setEditable(true);
+				txtAcompanhante.setEditable(true);
+				txtgrauParentesco.setEditable(true);
+				txtContactoAcompanhante.setEditable(true);
+			//	cmbIdade.setEnabled(true);
+				cmbCidade.setEnabled(true);
+				cmbIsencao.setEnabled(true);
+				cmbProveniencia.setEnabled(true);
+				txtNRAnalises.setEditable(true);
+				cmbAnalisePedidas.setEnabled(true);
+		   //   rbFemin.setEnabled(true);
+	       //   rbMasc.setEnabled(true);
+				btnLimpar.setEnabled(true);
+				btnInserir.setEnabled(true);
+				btnGravar.setEnabled(true);
+				btnLimpar1.setEnabled(true);
+			}
+		});
 		setLocation(point.findScreenCenter(this));
 	}
 }
-
-

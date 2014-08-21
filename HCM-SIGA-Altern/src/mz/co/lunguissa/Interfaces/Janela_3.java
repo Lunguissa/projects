@@ -36,6 +36,7 @@ import javax.swing.JTextPane;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Toolkit;
 
 public class Janela_3 extends JFrame {
 
@@ -78,6 +79,7 @@ public class Janela_3 extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_3() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Janela_3.class.getResource("/img/atendimento.png")));
 		 UIManager.put("OptionPane.yesButtonText", "Sim");  
          UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
          UIManager.put("OptionPane.noButtonText", "Não");  

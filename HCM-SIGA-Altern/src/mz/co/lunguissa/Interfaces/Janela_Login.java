@@ -14,6 +14,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.security.Key;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,13 +40,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Janela_Login extends JFrame {
 
 	private JPanel contentPane;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField txtTesteas;
-	private JPasswordField passwordField;
+	private JTextField txtUser;
+	private JPasswordField txtSenha;
 	private String data,horas,user;
 	private Date dataSistema =new Date();
 	/**
@@ -68,6 +72,10 @@ public class Janela_Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_Login() {
+		
+		point.users.add("programador");
+		
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Janela_Login.class.getResource("/img/atendimento.png")));
 		 UIManager.put("OptionPane.yesButtonText", "Sim");  
          UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
          UIManager.put("OptionPane.noButtonText", "Não");  
@@ -119,15 +127,38 @@ public class Janela_Login extends JFrame {
 		panel_1.setLayout(null);
 		
 		JButton btnSeguinte = new JButton("Iniciar Sess\u00E3o");
-		btnSeguinte.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				new Janela_Menu().setVisible(true);
+		btnSeguinte.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				int code=arg0.getKeyCode();
+				if(code==KeyEvent.VK_ENTER){
+				if(point.users.contains(txtUser.getText())){
+					dispose();
+					new Janela_Menu().setVisible(true);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(Janela_Login.this,"Usuario Invalido!!");
+					}
+				}
 			}
 		});
-		btnSeguinte.setFont(new Font("Consolas", Font.PLAIN, 17));
+		
+		btnSeguinte.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(point.users.contains(txtUser.getText())){
+				dispose();
+				new Janela_Menu().setVisible(true);
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(Janela_Login.this,"Usuario Invalido!!");
+				}
+			}
+		});
+		btnSeguinte.setFont(new Font("Consolas", Font.PLAIN, 18));
 		btnSeguinte.setBackground(Color.WHITE);
-		btnSeguinte.setBounds(477, 331, 195, 30);
+		btnSeguinte.setBounds(477, 325, 195, 36);
 		panel_1.add(btnSeguinte);
 		
 		JLabel lblNomeDoUtilizador = new JLabel("Nome do Utilizador:");
@@ -136,18 +167,51 @@ public class Janela_Login extends JFrame {
 		lblNomeDoUtilizador.setBounds(128, 237, 245, 20);
 		panel_1.add(lblNomeDoUtilizador);
 		
-		txtTesteas = new JTextField();
-		txtTesteas.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		txtTesteas.setColumns(10);
-		txtTesteas.setBackground(Color.WHITE);
-		txtTesteas.setBounds(389, 230, 283, 30);
-		panel_1.add(txtTesteas);
+		txtUser = new JTextField();
+		txtUser.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				int code=arg0.getKeyCode();
+				if(code==KeyEvent.VK_ENTER){
+				if(point.users.contains(txtUser.getText())){
+					dispose();
+					new Janela_Menu().setVisible(true);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(Janela_Login.this,"Usuario Invalido!!");
+					}
+				}
+			}
+		});
 		
-		passwordField = new JPasswordField();
-		passwordField.setFont(new Font("Consolas", Font.PLAIN, 23));
-		passwordField.setBackground(Color.WHITE);
-		passwordField.setBounds(389, 271, 283, 30);
-		panel_1.add(passwordField);
+		txtUser.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		txtUser.setColumns(10);
+		txtUser.setBackground(Color.WHITE);
+		txtUser.setBounds(389, 230, 283, 30);
+		panel_1.add(txtUser);
+		
+		txtSenha = new JPasswordField();
+		txtSenha.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				int code=arg0.getKeyCode();
+				if(code==KeyEvent.VK_ENTER){
+				if(point.users.contains(txtUser.getText())){
+					dispose();
+					new Janela_Menu().setVisible(true);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(Janela_Login.this,"Usuario Invalido!!");
+					}
+				}
+			}
+		});
+		txtSenha.setFont(new Font("Consolas", Font.PLAIN, 23));
+		txtSenha.setBackground(Color.WHITE);
+		txtSenha.setBounds(389, 271, 283, 30);
+		panel_1.add(txtSenha);
 		
 		JLabel lblPalavrapasse = new JLabel("Palavra-passe:");
 		lblPalavrapasse.setForeground(Color.BLACK);

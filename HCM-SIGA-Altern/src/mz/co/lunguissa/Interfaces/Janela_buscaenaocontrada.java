@@ -36,6 +36,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
+import java.awt.Toolkit;
 
 public class Janela_buscaenaocontrada extends JFrame {
 
@@ -64,6 +65,7 @@ public class Janela_buscaenaocontrada extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_buscaenaocontrada() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Janela_buscaenaocontrada.class.getResource("/img/atendimento.png")));
 		 UIManager.put("OptionPane.yesButtonText", "Sim");  
          UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
          UIManager.put("OptionPane.noButtonText", "Não");  
@@ -151,7 +153,7 @@ public class Janela_buscaenaocontrada extends JFrame {
 		label_3.setBounds(441, 488, 68, 30);
 		panel_1.add(label_3);
 		
-		JLabel lblHora = new JLabel("07h:56m");
+		JLabelTimer lblHora = new JLabelTimer();
 		lblHora.setFont(new Font("Consolas", Font.PLAIN, 14));
 		lblHora.setBounds(463, 488, 96, 30);
 		panel_1.add(lblHora);
@@ -177,7 +179,7 @@ public class Janela_buscaenaocontrada extends JFrame {
 	     horas=timeFormat.format(dataSistema);
 	     lblHora.setText(horas);
 	     user=point.users.get(0);
-	     lblUser.setText(user);
+	     lblUser.setText(point.users.get(0));
 		setLocation(point.findScreenCenter(this));
 	}
 }

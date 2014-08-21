@@ -47,6 +47,9 @@ import javax.swing.JCheckBox;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Janela_Menu extends JFrame {
 
@@ -75,6 +78,7 @@ public class Janela_Menu extends JFrame {
 	 * Create the frame.
 	 */
 	public Janela_Menu() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(Janela_Menu.class.getResource("/img/atendimento.png")));
 		 UIManager.put("OptionPane.yesButtonText", "Sim");  
          UIManager.put("OptionPane.cancelButtonText", "Cancelar");  
          UIManager.put("OptionPane.noButtonText", "Não");  
@@ -152,7 +156,8 @@ public class Janela_Menu extends JFrame {
 		label_4.setBounds(430, 489, 68, 30);
 		panel.add(label_4);
 		
-		JLabel lblHora = new JLabel("22h:08m");
+		JLabelTimer lblHora = new JLabelTimer();
+
 		lblHora.setFont(new Font("Consolas", Font.PLAIN, 14));
 		lblHora.setBounds(452, 489, 96, 30);
 		panel.add(lblHora);
@@ -168,6 +173,15 @@ public class Janela_Menu extends JFrame {
 		panel.add(label_7);
 		
 		JButton btnRecepo = new JButton("Recep\u00E7\u00E3o");
+		btnRecepo.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				int code=arg0.getKeyCode();
+				if(code==KeyEvent.VK_ENTER){
+					new Janela_buscaprocesso().setVisible(true);
+				}
+			}
+		});
 		btnRecepo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				new Janela_buscaprocesso().setVisible(true);
@@ -178,7 +192,16 @@ public class Janela_Menu extends JFrame {
 		btnRecepo.setBounds(10, 389, 259, 57);
 		panel.add(btnRecepo);
 		
-		JButton btnTraigem = new JButton("Traigem");
+		JButton btnTraigem = new JButton("Triagem");
+		btnTraigem.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				int code=arg0.getKeyCode();
+				if(code==KeyEvent.VK_ENTER){
+					new Janela_buscaprocessoTriagem().setVisible(true);
+				}
+			}
+		});
 		btnTraigem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Janela_buscaprocessoTriagem().setVisible(true);
@@ -190,6 +213,15 @@ public class Janela_Menu extends JFrame {
 		panel.add(btnTraigem);
 		
 		JButton btnMedico = new JButton("M\u00E9dico");
+		btnMedico.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				int code=arg0.getKeyCode();
+				if(code==KeyEvent.VK_ENTER){
+					new Janela_3().setVisible(true);
+				}
+			}
+		});
 		btnMedico.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new Janela_3().setVisible(true);
@@ -220,7 +252,7 @@ public class Janela_Menu extends JFrame {
 	     horas=timeFormat.format(dataSistema);
 	     lblHora.setText(horas);
 	     //user=point.users.get(0);
-	     lblUser.setText("Usuario Temporario");
+	     lblUser.setText(point.users.get(0));
 		
 		setLocation(point.findScreenCenter(this));
 	}
