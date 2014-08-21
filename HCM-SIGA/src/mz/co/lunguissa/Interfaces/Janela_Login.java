@@ -73,7 +73,7 @@ public class Janela_Login extends JFrame {
 	 */
 	public Janela_Login() {
 		
-		point.users.add("programador");
+		point.users.add("user");
 		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Janela_Login.class.getResource("/img/atendimento.png")));
 		 UIManager.put("OptionPane.yesButtonText", "Sim");  
