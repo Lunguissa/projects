@@ -240,7 +240,7 @@ public class Janela_Menu extends JFrame {
 		JButton btnAdministrao = new JButton("Administra\u00E7\u00E3o");
 		btnAdministrao.setFont(new Font("Consolas", Font.PLAIN, 20));
 		btnAdministrao.setBackground(Color.WHITE);
-		btnAdministrao.setBounds(644, 389, 190, 57);
+		btnAdministrao.setBounds(644, 389, 184, 57);
 		panel.add(btnAdministrao);
 		
 		JLabel lblFundo = new JLabel("fundo");
