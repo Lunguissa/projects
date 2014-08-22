@@ -72,14 +72,23 @@ public class TesteDoenteDAO {
 		
 		
 		ArrayList<DetalhesDoente> list= dao.getDetalhesDoente(25536);
+		ArrayList<Doente> list2= dao.getDoentes();
 		
-		for (int i = 0; i < list.size();i++){
+		for (int i = 0; i < list.size();i++)
+		{
 			System.out.println(list.get(i));
 		}
 		System.out.println("                              ");
 		System.out.println("getLastDetalhesDoente()");
 		DetalhesDoente dd2=dao.getLastDetalhesDoente(25536);
 		System.out.println(dd2);
+		
+		System.out.println("                              ");
+		for (int i = 0; i < list2.size();i++)
+		{
+			System.out.println(list2.get(i));
+		}
 	}
+	
 
 }
