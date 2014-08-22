@@ -132,18 +132,18 @@ public class Janela_Menu extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(Janela_Menu.class.getResource("/img/doctor_256r3.png")));
-		label.setBounds(543, 107, 285, 263);
+		label.setIcon(new ImageIcon(Janela_Menu.class.getResource("/img/doctor225.png")));
+		label.setBounds(439, 107, 191, 194);
 		panel.add(label);
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(Janela_Menu.class.getResource("/img/cadastro.png")));
-		label_1.setBounds(281, 107, 237, 257);
+		label_1.setIcon(new ImageIcon(Janela_Menu.class.getResource("/img/cadastro225.png")));
+		label_1.setBounds(234, 107, 205, 205);
 		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon(Janela_Menu.class.getResource("/img/reception.png")));
-		label_2.setBounds(10, 107, 249, 257);
+		label_2.setIcon(new ImageIcon(Janela_Menu.class.getResource("/img/reception225.png")));
+		label_2.setBounds(10, 96, 225, 216);
 		panel.add(label_2);
 		
 		JLabel lblData = new JLabel("18 de August de 2014");
@@ -187,9 +187,14 @@ public class Janela_Menu extends JFrame {
 				new Janela_buscaprocesso().setVisible(true);
 			}
 		});
-		btnRecepo.setFont(new Font("Consolas", Font.PLAIN, 23));
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setIcon(new ImageIcon(Janela_Menu.class.getResource("/img/administrator.png")));
+		label_3.setBounds(639, 111, 191, 194);
+		panel.add(label_3);
+		btnRecepo.setFont(new Font("Consolas", Font.PLAIN, 20));
 		btnRecepo.setBackground(Color.WHITE);
-		btnRecepo.setBounds(10, 389, 259, 57);
+		btnRecepo.setBounds(10, 389, 215, 57);
 		panel.add(btnRecepo);
 		
 		JButton btnTraigem = new JButton("Triagem");
@@ -207,9 +212,9 @@ public class Janela_Menu extends JFrame {
 				new Janela_buscaprocessoTriagem().setVisible(true);
 			}
 		});
-		btnTraigem.setFont(new Font("Consolas", Font.PLAIN, 23));
+		btnTraigem.setFont(new Font("Consolas", Font.PLAIN, 20));
 		btnTraigem.setBackground(Color.WHITE);
-		btnTraigem.setBounds(281, 389, 262, 57);
+		btnTraigem.setBounds(235, 389, 208, 57);
 		panel.add(btnTraigem);
 		
 		JButton btnMedico = new JButton("M\u00E9dico");
@@ -227,10 +232,16 @@ public class Janela_Menu extends JFrame {
 				new Janela_3().setVisible(true);
 			}
 		});
-		btnMedico.setFont(new Font("Consolas", Font.PLAIN, 23));
+		btnMedico.setFont(new Font("Consolas", Font.PLAIN, 20));
 		btnMedico.setBackground(Color.WHITE);
-		btnMedico.setBounds(553, 389, 275, 57);
+		btnMedico.setBounds(454, 389, 180, 57);
 		panel.add(btnMedico);
+		
+		JButton btnAdministrao = new JButton("Administra\u00E7\u00E3o");
+		btnAdministrao.setFont(new Font("Consolas", Font.PLAIN, 20));
+		btnAdministrao.setBackground(Color.WHITE);
+		btnAdministrao.setBounds(644, 389, 190, 57);
+		panel.add(btnAdministrao);
 		
 		JLabel lblFundo = new JLabel("fundo");
 		lblFundo.setBounds(-551, 0, 1961, 757);
