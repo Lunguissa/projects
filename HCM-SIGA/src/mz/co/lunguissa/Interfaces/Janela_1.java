@@ -395,6 +395,7 @@ public class Janela_1 extends JFrame {
 								
 								
 								txtNome.setText(Validacao.arranjaNome(txtNome.getText()));
+								if(Validacao.soContemNumeros(txtnumProcesso.getText())==true){
 								if(Validacao.soContemLetras(txtNome.getText())==true)
 								{
 									if(Validacao.soContemLetras(txtAcompanhante.getText())==true)
@@ -402,7 +403,68 @@ public class Janela_1 extends JFrame {
 										
 										if(Validacao.soContemLetras(txtgrauParentesco.getText())==true)
 										{
+											if(Validacao.soContemNumeros(txtContactoAcompanhante.getText())==true)
+											{
+												
+												if(Validacao.soContemNumeros(txtNRAnalises.getText())==true)
+												{
+													String selecionado ="";
+													if(rbtFemin.isSelected())
+													{
+														selecionado=rbtFemin.getText();
+													}
+													else if(rbtMasc.isSelected())
+													{
+														selecionado=rbtMasc.getText();
+													}
+													//glass.setVisible(true);
+													int a = 0;
+													try {
+														a = JOptionPane.showConfirmDialog(Janela_1.this,
+																"Confirme os dados a serem registrados: "
+																+" \n -------------------------------------------------------------------"
+																+ "\n Numero de Processo: "+txtnumProcesso.getText()
+																+ "\n Nome: "+txtNome.getText()
+																+ "\n Data de Nascimento: "+point.FormatDataAtual(txtData.getDate())
+																+ "\n Sexo: "+selecionado
+																+ "\n Idade: "+cmbIdade.getSelectedItem().toString()
+																+ "\n Morada: "+txtMorada.getText()
+																+ "\n Cidade: "+cmbCidade.getSelectedItem().toString() 
+																+ "\n Nome Acompanhante: "+txtAcompanhante.getText()
+																+ "\n Grau de Parentesco: "+txtgrauParentesco.getText()
+																+ "\n Contacto do Acompanhante: "+txtContactoAcompanhante.getText()
+																+ "\n Isencao de Pagamento: "+cmbIsencao.getSelectedItem().toString()
+																+ "\n Proveniencia: "+cmbProveniencia.getSelectedItem().toString()
+																+ "\n Analises Pedidas: "+ analisesPedidas
+																+ "\n N de Recibo das Analises: "+txtNRAnalises.getText()
+																+" \n -------------------------------------------------------------------","Confirmacao",
+																JOptionPane.YES_NO_OPTION);
+													} catch (HeadlessException | ParseException e1) {
+														// TODO Auto-generated catch block
+														e1.printStackTrace();
+													}
+														
+															
+													if (a == JOptionPane.YES_OPTION) {
+														//glass.setVisible(false);
+													} else {
+														//glass.setVisible(false);
+														setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+														
+													}
+												}
+												else
+												{
+													JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Numero de Recibo de Analises!");
+												}
+												
+											}
+											else
+											{
+												JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Contacto do Acompanhante!");
+											}
 											
+																		
 										}
 										else
 										{
@@ -420,49 +482,12 @@ public class Janela_1 extends JFrame {
 								{
 									JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Nome!");
 								}
-								String selecionado ="";
-								if(rbtFemin.isSelected())
+								}
+								else
 								{
-									selecionado=rbtFemin.getText();
+									JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Numero de Processo!");
 								}
-								else if(rbtMasc.isSelected())
-								{
-									selecionado=rbtMasc.getText();
-								}
-								//glass.setVisible(true);
-								int a = 0;
-								try {
-									a = JOptionPane.showConfirmDialog(Janela_1.this,
-											"Confirma os dados a serem armazenados? "
-											+ "\n Numero de Processo: "+txtnumProcesso.getText()
-											+ "\n Nome: "+txtNome.getText()
-											+ "\n Data de Nascimento: "+point.FormatDataAtual(txtData.getDate())
-											+ "\n Sexo: "+selecionado
-											+ "\n Idade: "+cmbIdade.getSelectedItem().toString()
-											+ "\n Morada: "+txtMorada.getText()
-											+ "\n Cidade: "+cmbCidade.getSelectedItem().toString() 
-											+ "\n Nome Acompanhante: "+txtAcompanhante.getText()
-											+ "\n Grau de Parentesco: "+txtgrauParentesco.getText()
-											+ "\n Contacto do Acompanhante: "+txtContactoAcompanhante.getText()
-											+ "\n Isencao de Pagamento: "+cmbIsencao.getSelectedItem().toString()
-											+ "\n Proveniencia: "+cmbProveniencia.getSelectedItem().toString()
-											+ "\n Analises Pedidas: "+ analisesPedidas
-											+ "\n N de Analises Pedidadas: "+txtNRAnalises.getText(), "Confirmacao",
-											JOptionPane.YES_NO_OPTION);
-								} catch (HeadlessException | ParseException e1) {
-									// TODO Auto-generated catch block
-									e1.printStackTrace();
-								}
-									
-										
-								if (a == JOptionPane.YES_OPTION) {
-									//glass.setVisible(false);
-								} else {
-									//glass.setVisible(false);
-									setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-									
-								}
-																		
+											
 																	}
 																	else {
 																		JOptionPane.showMessageDialog(null,

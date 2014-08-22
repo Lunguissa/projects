@@ -21,6 +21,23 @@ public class Validacao
          return true;  
     } 
     
+    public static boolean soContemNumeros(String texto) 
+    {  
+    	texto=texto.replace(" ","");
+    	
+        if(texto == null || texto.equals(""))  
+        {
+            return false;
+        }
+        
+        for (int i = 0; i < texto.length(); i++)
+        {  
+            if (!Character.isDigit(texto.charAt(i)))   
+                return false;
+         }  
+         return true;  
+    } 
+    
     public static String arranjaNome(String nom)
 	{
 		
