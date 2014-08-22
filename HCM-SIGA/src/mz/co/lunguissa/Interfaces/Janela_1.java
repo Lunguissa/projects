@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.HeadlessException;
 
+import javax.print.attribute.standard.Finishings;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager.LookAndFeelInfo;
@@ -70,6 +71,7 @@ public class Janela_1 extends JFrame {
 	private JRadioButton rbtMasc;
 	private BlockingGlassPane glass = new BlockingGlassPane();
 	private String analisesPedidas="";
+	private ArrayList<String > analises = new ArrayList<String>();
 	/**
 	 * Launch the application.
 	 */
@@ -390,8 +392,9 @@ public class Janela_1 extends JFrame {
 																{
 																	if(!txtNRAnalises.getText().isEmpty())
 																	{
-								JOptionPane.showMessageDialog(null, "Todos Campos Preenchidos");
+								
 								setGlassPane(glass);
+								
 								
 								
 								txtNome.setText(Validacao.arranjaNome(txtNome.getText()));
@@ -408,6 +411,11 @@ public class Janela_1 extends JFrame {
 												
 												if(Validacao.soContemNumeros(txtNRAnalises.getText())==true)
 												{
+													for (int i = 0; i < analises.size(); i++) {
+														
+														analisesPedidas=analisesPedidas+" "+analises.get(i)+",";
+													}
+													
 													String selecionado ="";
 													if(rbtFemin.isSelected())
 													{
@@ -443,12 +451,11 @@ public class Janela_1 extends JFrame {
 														// TODO Auto-generated catch block
 														e1.printStackTrace();
 													}
-														
-															
+													analisesPedidas="";
 													if (a == JOptionPane.YES_OPTION) {
-														//glass.setVisible(false);
+														JOptionPane.showMessageDialog(null, "Objecto");
 													} else {
-														//glass.setVisible(false);
+														
 														setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 														
 													}
@@ -589,7 +596,7 @@ public class Janela_1 extends JFrame {
 
 		JButton btnInserir = new JButton("Inserir");
 		btnInserir.addActionListener(new ActionListener() {
-			
+	
 			public void actionPerformed(ActionEvent e) {
 				exists = false;
 				DefaultTableModel modelo = (DefaultTableModel) tblAnalises
@@ -605,8 +612,8 @@ public class Janela_1 extends JFrame {
 						JOptionPane.showMessageDialog(null,
 								"Pedido de Análise já existente na Tabela");
 					if (exists == false){
+						analises.add(cmbAnalisePedidas.getSelectedItem().toString());
 						modelo.addRow(cmbAnalisePedidas.getSelectedObjects());
-						analisesPedidas =analisesPedidas+" "+cmbAnalisePedidas.getSelectedItem().toString()+",";
 					}
 				}
 				else
@@ -619,8 +626,22 @@ public class Janela_1 extends JFrame {
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				tblAnalises.removeAll();
+			    DefaultTableModel dtm = (DefaultTableModel)tblAnalises.getModel();  
+	            if (tblAnalises.getSelectedRow() >= 0){  
+	            	for (int i = 0; i < analises.size(); i++) {
+						if(tblAnalises.getValueAt(tblAnalises.getSelectedRow(), 0).equals(analises.get(i)))
+						{
+							analises.remove(i);
+							
+						}
+					}
+	                dtm.removeRow(tblAnalises.getSelectedRow());  
+	                tblAnalises.setModel(dtm);  
+	                
+	                
+	            }else{  
+	                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");  
+	            }  
 			}
 		});
 		btnRemover.setFont(new Font("Consolas", Font.PLAIN, 12));
