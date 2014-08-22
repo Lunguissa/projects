@@ -170,6 +170,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(txtnumProcesso);
 
 		txtNome = new JTextField();
+		txtNome.setToolTipText("Nome do Doente");
 		txtNome.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		txtNome.setColumns(10);
 		txtNome.setBackground(Color.WHITE);
@@ -201,6 +202,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(lblNReciboDas);
 
 		txtMorada = new JTextField();
+		txtMorada.setToolTipText("Morada");
 		txtMorada.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		txtMorada.setColumns(10);
 		txtMorada.setBackground(Color.WHITE);
@@ -254,6 +256,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(lblGrauDeParentesco);
 
 		txtgrauParentesco = new JTextField();
+		txtgrauParentesco.setToolTipText("Grau de Parentesco");
 		txtgrauParentesco.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		txtgrauParentesco.setColumns(10);
 		txtgrauParentesco.setBackground(Color.WHITE);
@@ -261,6 +264,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(txtgrauParentesco);
 
 		txtAcompanhante = new JTextField();
+		txtAcompanhante.setToolTipText("Nome do Acompanhante");
 		txtAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		txtAcompanhante.setColumns(10);
 		txtAcompanhante.setBackground(Color.WHITE);
@@ -274,6 +278,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(lblContactoAcompanhante);
 
 		final JDateChooser txtData = new JDateChooser();
+		txtData.setToolTipText("Data de Nascimento");
 		txtData.setLocale(new Locale("pt", "PT"));
 		txtData.setBounds(362, 117, 147, 35);
 		panel_1.add(txtData);
@@ -287,6 +292,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(cmbCidade);
 
 		txtContactoAcompanhante = new JTextField();
+		txtContactoAcompanhante.setToolTipText("Contacto do Acompanhante");
 		txtContactoAcompanhante.setFont(new Font("Times New Roman", Font.PLAIN,
 				20));
 		txtContactoAcompanhante.setColumns(10);
@@ -352,6 +358,7 @@ public class Janela_1 extends JFrame {
 		panel_2.add(txtNRAnalises);
 
 		JLabel label_3 = new JLabel("N\u00BA Recibo das An\u00E1lises:");
+		label_3.setToolTipText("N\u00BA Recibo das An\u00E1lises:");
 		label_3.setForeground(Color.BLACK);
 		label_3.setFont(new Font("Consolas", Font.PLAIN, 20));
 		label_3.setBounds(76, 339, 267, 35);
