@@ -8,10 +8,12 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import javax.imageio.ImageIO;
@@ -33,6 +35,14 @@ public class point {
 
 		return fin;
 	}
+	public static String FormatDataAtual(Date date) throws ParseException   
+	{   
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");   
+        GregorianCalendar calendar = new GregorianCalendar();      
+        String data = dateFormat.format(date);  
+        
+        return data;
+	}  
 	
 	 public static BufferedImage loadImage(String file) throws IOException {
 	        return ImageIO.read(new File(file));
