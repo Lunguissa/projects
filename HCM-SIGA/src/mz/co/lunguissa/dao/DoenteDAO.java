@@ -165,6 +165,62 @@ public class DoenteDAO
 		}// end try
 		return null;
 	}
+	
+	public ArrayList<Doente> getDoentes (){
+		Connection conn = DBConnection.getConnection();
+		ArrayList<Doente> list= new ArrayList<>();
+		PreparedStatement stmt = null;
+		try {
+			
+			
+			String sql;
+			sql = "SELECT * FROM DOENTE";
+			stmt = conn.prepareStatement(sql);
+			
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			Doente doente = null;
+
+			// STEP 5: Extract data from result set
+			while (rs.next()) {
+				doente = new Doente();
+				
+				doente.setNumProcesso(rs.getLong("NUM_PROCESSO"));
+				doente.setNome(rs.getString("NOME"));
+				doente.setApelido(rs.getString("APELIDO"));
+				doente.setDataNascimento(rs.getDate("DATA_NASC"));
+				doente.setSexo(rs.getString("SEXO"));
+				list.add(doente);
+			}
+			// STEP 6: Clean-up environment
+			rs.close();
+			stmt.close();
+			conn.close();
+			return list;
+		} catch (SQLException se) {
+			// Handle errors for JDBC
+			log.info(se);
+		} catch (Exception e) {
+			// Handle errors for Class.forName
+			log.info(e);
+		} finally {
+			// finally block used to close resources
+			try {
+				if (stmt != null)
+					stmt.close();
+			} catch (SQLException se2) {
+			}// nothing we can do
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException se) {
+				se.printStackTrace();
+			}// end finally try
+		}// end try
+		return null;
+	}
+	
 	public DetalhesDoente getLastDetalhesDoente (int numProcesso){
 		Connection conn = DBConnection.getConnection();
 		PreparedStatement stmt = null;

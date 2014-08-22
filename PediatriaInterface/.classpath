@@ -5,5 +5,9 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/towel"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/date"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/datepicker"/>
+	<classpathentry kind="lib" path="lib/apache-logging-log4j.jar"/>
+	<classpathentry kind="lib" path="lib/DatePicker-V0.99-2006.09.01.jar"/>
+	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
