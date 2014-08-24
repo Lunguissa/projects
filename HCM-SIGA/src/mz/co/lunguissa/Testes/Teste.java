@@ -1,9 +1,12 @@
 package mz.co.lunguissa.Testes;
 
+import java.awt.HeadlessException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.Properties;
+
 import org.apache.log4j.Logger;
 
 import mz.co.lunguissa.Interfaces.Janela_1;
@@ -16,7 +19,7 @@ public class Teste {
 
 	private static Logger log = Logger.getLogger(Teste.class);
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws HeadlessException, ParseException {
 		log.info("Starting app");
 		
 		log.info("Loading properties");

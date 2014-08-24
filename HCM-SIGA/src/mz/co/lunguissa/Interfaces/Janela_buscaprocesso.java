@@ -2,6 +2,7 @@ package mz.co.lunguissa.Interfaces;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.HeadlessException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import javax.swing.JLabel;
 
 import java.awt.Font;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -175,7 +177,15 @@ public class Janela_buscaprocesso extends JFrame {
 		btnNovoProcesso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				new Janela_1().setVisible(true);
+				try {
+					new Janela_1().setVisible(true);
+				} catch (HeadlessException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnNovoProcesso.setFont(new Font("Consolas", Font.PLAIN, 17));

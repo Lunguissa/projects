@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.HeadlessException;
 
+import javax.naming.ldap.Rdn;
 import javax.print.attribute.standard.Finishings;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.UIManager;
 
+import mz.co.lunguissa.Funcionalidades.Data;
 import mz.co.lunguissa.Funcionalidades.DateTextField;
 import mz.co.lunguissa.Funcionalidades.ObservingTextField;
 import mz.co.lunguissa.Funcionalidades.Validacao;
@@ -41,9 +43,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.lang.reflect.Field;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 import com.toedter.calendar.JDateChooser;
@@ -53,6 +59,26 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.Toolkit;
+import java.awt.event.ContainerListener;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+
+import javax.swing.event.CaretListener;
+import javax.swing.event.CaretEvent;
+
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.awt.Cursor;
+import java.awt.event.HierarchyListener;
+import java.awt.event.HierarchyEvent;
 
 public class Janela_1 extends JFrame {
 
@@ -70,8 +96,10 @@ public class Janela_1 extends JFrame {
 	private JRadioButton rbtFemin;
 	private JRadioButton rbtMasc;
 	private BlockingGlassPane glass = new BlockingGlassPane();
-	private String analisesPedidas="";
-	private ArrayList<String > analises = new ArrayList<String>();
+	private String analisesPedidas = "";
+	private ArrayList<String> analises = new ArrayList<String>();
+	private JDateChooser txtData;
+
 	/**
 	 * Launch the application.
 	 */
@@ -90,8 +118,11 @@ public class Janela_1 extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * 
+	 * @throws ParseException
+	 * @throws HeadlessException
 	 */
-	public Janela_1() {
+	public Janela_1() throws HeadlessException, ParseException {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(
 				Janela_1.class.getResource("/img/atendimento.png")));
 		UIManager.put("OptionPane.yesButtonText", "Sim");
@@ -162,6 +193,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(lblNmeroDeProcesso);
 
 		txtnumProcesso = new JTextField();
+
 		txtnumProcesso.setToolTipText("N\u00FAmero de Processo");
 		txtnumProcesso.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		txtnumProcesso.setColumns(10);
@@ -230,6 +262,7 @@ public class Janela_1 extends JFrame {
 		panel_1.add(rbtMasc);
 
 		final JComboBox cmbIdade = new JComboBox();
+
 		cmbIdade.setModel(new DefaultComboBoxModel(new String[] {
 				"Escolha uma Opcao:", "< 1 m\u00EAs", "1-11m", "12m-5anos",
 				"5-10anos", ">10 anos" }));
@@ -269,6 +302,7 @@ public class Janela_1 extends JFrame {
 		txtAcompanhante.setColumns(10);
 		txtAcompanhante.setBackground(Color.WHITE);
 		txtAcompanhante.setBounds(362, 332, 332, 30);
+
 		panel_1.add(txtAcompanhante);
 
 		JLabel lblContactoAcompanhante = new JLabel("Contacto do Acompanhante:");
@@ -277,7 +311,87 @@ public class Janela_1 extends JFrame {
 		lblContactoAcompanhante.setBounds(69, 423, 283, 35);
 		panel_1.add(lblContactoAcompanhante);
 
-		final JDateChooser txtData = new JDateChooser();
+		txtData = new JDateChooser();
+		txtData.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+			public void propertyChange(java.beans.PropertyChangeEvent evt) {
+				// If the 'date' property was changed...
+				if ("date".equals(evt.getPropertyName())) {
+					JDateChooser aDateChooser = (JDateChooser) evt.getSource();
+					boolean isDateSelectedByUser = false;
+					// Get the otherwise unaccessible JDateChooser's
+					// 'dateSelected' field.
+					try {
+						// Get the desired field using reflection
+						Field dateSelectedField = JDateChooser.class
+								.getDeclaredField("dateSelected");
+						// This line makes the value accesible (can be read
+						// and/or modified)
+						dateSelectedField.setAccessible(true);
+						isDateSelectedByUser = dateSelectedField
+								.getBoolean(aDateChooser);
+					} catch (Exception ignoreOrNot) {
+					}
+
+					// Do some important stuff depending on wether value was
+					// changed by user
+					if (isDateSelectedByUser) {
+						JOptionPane.showMessageDialog(null, "Funcionou");
+						try {
+							int diass = Data.getDaysOfInterval("08/11/2013",
+									point.FormatDataAtual(new Date()));
+							JOptionPane.showMessageDialog(null, diass);
+						} catch (ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						try {
+
+							int anos = Validacao.calculoAnos(txtData);
+							int dias = Data.getDaysOfInterval(
+									point.FormatDataAtual(txtData.getDate()),
+									point.FormatDataAtual(new Date()));
+							double meses = Validacao.calculoMeses(
+									point.FormatDataAtual(txtData.getDate()),
+									point.FormatDataAtual(new Date()));
+							if (meses < 1) {
+								cmbIdade.setSelectedIndex(1);
+							}
+							if (meses >= 1 && meses < 12) {
+								cmbIdade.setSelectedIndex(2);
+							}
+							if (meses >= 12 && anos < 5) {
+								cmbIdade.setSelectedIndex(3);
+							}
+							if (anos >= 5 && anos <= 10) {
+								cmbIdade.setSelectedIndex(4);
+							}
+							if (anos > 10) {
+								cmbIdade.setSelectedIndex(5);
+							}
+
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+
+					// Reset the value to false
+					try {
+						Field dateSelectedField = JDateChooser.class
+								.getDeclaredField("dateSelected");
+						dateSelectedField.setAccessible(true);
+						dateSelectedField.setBoolean(aDateChooser, false);
+					} catch (Exception ignoreOrNot) {
+					}
+				}
+			}
+		});
+
+		txtData.getCalendarButton().setToolTipText("Data de Nascimento");
+		txtData.setFont(new Font("Consolas", Font.PLAIN, 14));
+
+		txtData.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+
 		txtData.setToolTipText("Data de Nascimento");
 		txtData.setLocale(new Locale("pt", "PT"));
 		txtData.setBounds(362, 117, 147, 35);
@@ -305,6 +419,11 @@ public class Janela_1 extends JFrame {
 				.getResource("/img/fundo.jpg")));
 		lblNewLabel.setBounds(-3, -27, 840, 559);
 		panel_1.add(lblNewLabel);
+
+		final JRadioButton rdbtnInvisivel = new JRadioButton("invisivel");
+		rdbtnInvisivel.setBounds(585, 165, 109, 23);
+		buttonGroup.add(rdbtnInvisivel);
+		panel_1.add(rdbtnInvisivel);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setLayout(null);
@@ -369,6 +488,13 @@ public class Janela_1 extends JFrame {
 		label_2.setFont(new Font("Consolas", Font.PLAIN, 20));
 		label_2.setBounds(75, 160, 252, 35);
 		panel_2.add(label_2);
+		final JComboBox cmbAnalisePedidas = new JComboBox();
+		cmbAnalisePedidas.setModel(new DefaultComboBoxModel(new String[] {
+				"Escolha uma Opcao:", "HTZ", "HIV", "RX", "Urina",
+				"Bioquimica", "Hemograma", "Outras" }));
+		cmbAnalisePedidas.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		cmbAnalisePedidas.setBounds(360, 163, 216, 32);
+		panel_2.add(cmbAnalisePedidas);
 
 		JButton btnGravar = new JButton("Gravar");
 		btnGravar.addActionListener(new ActionListener() {
@@ -381,208 +507,310 @@ public class Janela_1 extends JFrame {
 									|| buttonGroup.isSelected(rbtMasc
 											.getModel())) {
 								if (!(cmbIdade.getSelectedIndex() == 0)) {
-									if(!txtMorada.getText().isEmpty())
-									{
-										if(!(cmbCidade.getSelectedIndex()==0))
-										{
-											if(!txtAcompanhante.getText().isEmpty())
-											{
-												if(!txtgrauParentesco.getText().isEmpty())
-												{
-													if(!txtContactoAcompanhante.getText().isEmpty())
-													{
-														if(!(cmbIsencao.getSelectedIndex()==0))
-														{
-															if(!(cmbProveniencia.getSelectedIndex()==0))
-															{
-																if(!(tblAnalises.getModel().getRowCount()==0))
-																{
-																	if(!txtNRAnalises.getText().isEmpty())
-																	{
-								
-								setGlassPane(glass);
-								
-								
-								
-								txtNome.setText(Validacao.arranjaNome(txtNome.getText()));
-								if(Validacao.soContemNumeros(txtnumProcesso.getText())==true){
-								if(Validacao.soContemLetras(txtNome.getText())==true)
-								{
-									if(Validacao.soContemLetras(txtAcompanhante.getText())==true)
-									{
-										
-										if(Validacao.soContemLetras(txtgrauParentesco.getText())==true)
-										{
-											if(Validacao.soContemNumeros(txtContactoAcompanhante.getText())==true)
-											{
-												
-												if(Validacao.soContemNumeros(txtNRAnalises.getText())==true)
-												{
-													for (int i = 0; i < analises.size(); i++) {
-														
-														analisesPedidas=analisesPedidas+" "+analises.get(i)+",";
-													}
-													
-													String selecionado ="";
-													if(rbtFemin.isSelected())
-													{
-														selecionado=rbtFemin.getText();
-													}
-													else if(rbtMasc.isSelected())
-													{
-														selecionado=rbtMasc.getText();
-													}
-													//glass.setVisible(true);
-													int a = 0;
-													try {
-														a = JOptionPane.showConfirmDialog(Janela_1.this,
-																"Confirme os dados a serem registrados: "
-																+" \n -------------------------------------------------------------------"
-																+ "\n Numero de Processo: "+txtnumProcesso.getText()
-																+ "\n Nome: "+txtNome.getText()
-																+ "\n Data de Nascimento: "+point.FormatDataAtual(txtData.getDate())
-																+ "\n Sexo: "+selecionado
-																+ "\n Idade: "+cmbIdade.getSelectedItem().toString()
-																+ "\n Morada: "+txtMorada.getText()
-																+ "\n Cidade: "+cmbCidade.getSelectedItem().toString() 
-																+ "\n Nome Acompanhante: "+txtAcompanhante.getText()
-																+ "\n Grau de Parentesco: "+txtgrauParentesco.getText()
-																+ "\n Contacto do Acompanhante: "+txtContactoAcompanhante.getText()
-																+ "\n Isencao de Pagamento: "+cmbIsencao.getSelectedItem().toString()
-																+ "\n Proveniencia: "+cmbProveniencia.getSelectedItem().toString()
-																+ "\n Analises Pedidas: "+ analisesPedidas
-																+ "\n N de Recibo das Analises: "+txtNRAnalises.getText()
-																+" \n -------------------------------------------------------------------","Confirmacao",
-																JOptionPane.YES_NO_OPTION);
-													} catch (HeadlessException | ParseException e1) {
-														// TODO Auto-generated catch block
-														e1.printStackTrace();
-													}
-													analisesPedidas="";
-													if (a == JOptionPane.YES_OPTION) {
-														JOptionPane.showMessageDialog(null, "Objecto");
+									if (!txtMorada.getText().isEmpty()) {
+										if (!(cmbCidade.getSelectedIndex() == 0)) {
+											if (!txtAcompanhante.getText()
+													.isEmpty()) {
+												if (!txtgrauParentesco
+														.getText().isEmpty()) {
+													if (!txtContactoAcompanhante
+															.getText()
+															.isEmpty()) {
+														if (!(cmbIsencao
+																.getSelectedIndex() == 0)) {
+															if (!(cmbProveniencia
+																	.getSelectedIndex() == 0)) {
+																if (!(tblAnalises
+																		.getModel()
+																		.getRowCount() == 0)) {
+																	if (!txtNRAnalises
+																			.getText()
+																			.isEmpty()) {
+
+																		setGlassPane(glass);
+
+																		txtNome.setText(Validacao
+																				.arranjaNome(txtNome
+																						.getText()));
+																		txtAcompanhante
+																				.setText(Validacao
+																						.arranjaNome(txtAcompanhante
+																								.getText()));
+																		if (Validacao
+																				.soContemNumeros(txtnumProcesso
+																						.getText()) == true) {
+																			if (Validacao
+																					.soContemLetras(txtNome
+																							.getText()) == true) {
+																				if (Validacao
+																						.soContemLetras(txtAcompanhante
+																								.getText()) == true) {
+
+																					if (Validacao
+																							.soContemLetras(txtgrauParentesco
+																									.getText()) == true) {
+																						if (Validacao
+																								.soContemNumeros(txtContactoAcompanhante
+																										.getText()) == true) {
+
+																							if (Validacao
+																									.soContemNumeros(txtNRAnalises
+																											.getText()) == true) {
+																								for (int i = 0; i < analises
+																										.size(); i++) {
+
+																									analisesPedidas = analisesPedidas
+																											+ " "
+																											+ analises
+																													.get(i)
+																											+ ",";
+																								}
+
+																								String selecionado = "";
+																								if (rbtFemin
+																										.isSelected()) {
+																									selecionado = rbtFemin
+																											.getText();
+																								} else if (rbtMasc
+																										.isSelected()) {
+																									selecionado = rbtMasc
+																											.getText();
+																								}
+																								// glass.setVisible(true);
+																								int a = 0;
+																								try {
+																									a = JOptionPane
+																											.showConfirmDialog(
+																													Janela_1.this,
+																													"Confirme os dados a serem registrados: "
+																															+ " \n -------------------------------------------------------------------"
+																															+ "\n Numero de Processo: "
+																															+ txtnumProcesso
+																																	.getText()
+																															+ "\n Nome: "
+																															+ txtNome
+																																	.getText()
+																															+ "\n Data de Nascimento: "
+																															+ point.FormatDataAtual(txtData
+																																	.getDate())
+																															+ "\n Sexo: "
+																															+ selecionado
+																															+ "\n Idade: "
+																															+ cmbIdade
+																																	.getSelectedItem()
+																																	.toString()
+																															+ "\n Morada: "
+																															+ txtMorada
+																																	.getText()
+																															+ "\n Cidade: "
+																															+ cmbCidade
+																																	.getSelectedItem()
+																																	.toString()
+																															+ "\n Nome Acompanhante: "
+																															+ txtAcompanhante
+																																	.getText()
+																															+ "\n Grau de Parentesco: "
+																															+ txtgrauParentesco
+																																	.getText()
+																															+ "\n Contacto do Acompanhante: "
+																															+ txtContactoAcompanhante
+																																	.getText()
+																															+ "\n Isencao de Pagamento: "
+																															+ cmbIsencao
+																																	.getSelectedItem()
+																																	.toString()
+																															+ "\n Proveniencia: "
+																															+ cmbProveniencia
+																																	.getSelectedItem()
+																																	.toString()
+																															+ "\n Analises Pedidas: "
+																															+ analisesPedidas
+																															+ "\n N de Recibo das Analises: "
+																															+ txtNRAnalises
+																																	.getText()
+																															+ " \n -------------------------------------------------------------------",
+																													"Confirmacao",
+																													JOptionPane.YES_NO_OPTION);
+																								} catch (
+																										HeadlessException
+																										| ParseException e1) {
+																									// TODO
+																									// Auto-generated
+																									// catch
+																									// block
+																									e1.printStackTrace();
+																								}
+																								analisesPedidas = "";
+																								if (a == JOptionPane.YES_OPTION) {
+																									JOptionPane
+																											.showMessageDialog(
+																													null,
+																													"Objecto");
+
+																									txtnumProcesso
+																											.setText(null);
+																									txtNome.setText(null);
+																									txtMorada
+																											.setText(null);
+																									txtAcompanhante
+																											.setText(null);
+																									txtgrauParentesco
+																											.setText(null);
+																									txtContactoAcompanhante
+																											.setText(null);
+																									cmbIdade.setSelectedIndex(0);
+																									cmbCidade
+																											.setSelectedIndex(0);
+																									buttonGroup
+																											.setSelected(
+																													null,
+																													false);
+																									cmbIsencao
+																											.setSelectedIndex(0);
+																									cmbProveniencia
+																											.setSelectedIndex(0);
+																									cmbAnalisePedidas
+																											.setSelectedIndex(0);
+																									txtData.setDate(null);
+																									txtNRAnalises
+																											.setText(null);
+																									rbtFemin.setSelected(false);
+																									rbtMasc.setSelected(false);
+																									rdbtnInvisivel
+																											.setSelected(true);
+																									tblAnalises
+																											.setModel(new DefaultTableModel(
+																													new Object[][] {
+
+																													},
+																													new String[] { "An\u00E1lises Pedidas" }));
+
+																									analises = new ArrayList<String>();
+																									analisesPedidas = "";
+																								} else {
+
+																									setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+
+																								}
+																							} else {
+																								JOptionPane
+																										.showMessageDialog(
+																												Janela_1.this,
+																												"Certifique-se de que introduziu correctamente o Numero de Recibo de Analises!");
+																							}
+
+																						} else {
+																							JOptionPane
+																									.showMessageDialog(
+																											Janela_1.this,
+																											"Certifique-se de que introduziu correctamente o Contacto do Acompanhante!");
+																						}
+
+																					} else {
+																						JOptionPane
+																								.showMessageDialog(
+																										Janela_1.this,
+																										"Certifique-se de que introduziu correctamente o Grau de Parentesco!");
+																					}
+
+																				} else {
+																					JOptionPane
+																							.showMessageDialog(
+																									Janela_1.this,
+																									"Certifique-se de que introduziu correctamente o Nome do Acompanhante!");
+																				}
+
+																			} else {
+																				JOptionPane
+																						.showMessageDialog(
+																								Janela_1.this,
+																								"Certifique-se de que introduziu correctamente o Nome!");
+																			}
+																		} else {
+																			JOptionPane
+																					.showMessageDialog(
+																							Janela_1.this,
+																							"Certifique-se de que introduziu correctamente o Numero de Processo!");
+																		}
+
+																	} else {
+																		JOptionPane
+																				.showMessageDialog(
+																						null,
+																						"Numero de Recibo de analises Vazio");
+																	}
+
+																} else {
+																	JOptionPane
+																			.showMessageDialog(
+																					null,
+																					"Escolha pelomenos uma (1) analise");
+																}
+
+															} else {
+																JOptionPane
+																		.showMessageDialog(
+																				null,
+																				"Proveniencia Nao selecionada");
+															}
+
+														} else {
+															JOptionPane
+																	.showMessageDialog(
+																			null,
+																			"Isencao Nao selecionada");
+														}
+
 													} else {
-														
-														setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-														
+														JOptionPane
+																.showMessageDialog(
+																		null,
+																		"Contacto de Acompanhante Vazio");
 													}
+
+												} else {
+													JOptionPane
+															.showMessageDialog(
+																	null,
+																	"Grau de parentesco Vazio");
 												}
-												else
-												{
-													JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Numero de Recibo de Analises!");
-												}
-												
+
 											}
-											else
-											{
-												JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Contacto do Acompanhante!");
-											}
-											
-																		
-										}
-										else
-										{
-											JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Grau de Parentesco!");
-										}
-										
-									}
-									else
-									{
-										JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Nome do Acompanhante!");
-									}
-									
-								}
-								else
-								{
-									JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Nome!");
-								}
-								}
-								else
-								{
-									JOptionPane.showMessageDialog(Janela_1.this, "Certifique-se de que introduziu correctamente o Numero de Processo!");
-								}
-											
-																	}
-																	else {
-																		JOptionPane.showMessageDialog(null,
-																			"Numero de Recibo de analises Vazio");
-																	}
-																	
-																}
-																else {
-																	JOptionPane.showMessageDialog(null,
-																		"Escolha pelomenos uma (1) analise");
-																}
-																
-															}
-															else {
-																JOptionPane.showMessageDialog(null,
-																	"Proveniencia Nao selecionada");
-															}
-															
-															
-														}
-														else {
-															JOptionPane.showMessageDialog(null,
-																"Isencao Nao selecionada");
-														}
-														
-														
-														
-													}
-													else {
-														JOptionPane.showMessageDialog(null,
-															"Contacto de Acompanhante Vazio");
-													}
-													
-												}
-												else {
-													JOptionPane.showMessageDialog(null,
-														"Grau de parentesco Vazio");
-												}
-												
-												
-											}
-											
+
 											else {
-												JOptionPane.showMessageDialog(null,
-													"Nome de Acompanhante Vazio");
+												JOptionPane
+														.showMessageDialog(
+																null,
+																"Nome de Acompanhante Vazio");
 											}
-											
-											}
-										else {
+
+										} else {
 											JOptionPane.showMessageDialog(null,
-												"Cidade Nao selecionada");
+													"Cidade Nao selecionada");
 										}
-										
+
+									} else {
+										JOptionPane.showMessageDialog(null,
+												"Morada Invalida");
 									}
-									else {
-										JOptionPane.showMessageDialog(null,
-											"Morada Invalida");
-								}
-								}
-								 else {
-										JOptionPane.showMessageDialog(null,
+								} else {
+									JOptionPane.showMessageDialog(null,
 											"Idade Nao selecionada");
-							}
-							
-							}
-							else {
+								}
+
+							} else {
 								JOptionPane.showMessageDialog(null,
 										"Sexo Invalido");
-						} 
-						}
-						else {
+							}
+						} else {
 							JOptionPane
 									.showMessageDialog(null, "Data Invalida");
-					} 
-					}
-					else {
+						}
+					} else {
 						JOptionPane.showMessageDialog(null, "Nome Vazio");
-				}
-				
-				}
-				else {
+					}
+
+				} else {
 					JOptionPane.showMessageDialog(null,
 							"Numero de Processo Vazio");
 				}
@@ -593,17 +821,9 @@ public class Janela_1 extends JFrame {
 		btnGravar.setBounds(441, 453, 115, 48);
 		panel_2.add(btnGravar);
 
-		final JComboBox cmbAnalisePedidas = new JComboBox();
-		cmbAnalisePedidas.setModel(new DefaultComboBoxModel(new String[] {
-				"Escolha uma Opcao:", "HTZ", "HIV", "RX", "Urina",
-				"Bioquimica", "Hemograma", "Outras" }));
-		cmbAnalisePedidas.setFont(new Font("Times New Roman", Font.PLAIN, 16));
-		cmbAnalisePedidas.setBounds(360, 163, 216, 32);
-		panel_2.add(cmbAnalisePedidas);
-
 		JButton btnInserir = new JButton("Inserir");
 		btnInserir.addActionListener(new ActionListener() {
-	
+
 			public void actionPerformed(ActionEvent e) {
 				exists = false;
 				DefaultTableModel modelo = (DefaultTableModel) tblAnalises
@@ -618,37 +838,40 @@ public class Janela_1 extends JFrame {
 					if (exists == true)
 						JOptionPane.showMessageDialog(null,
 								"Pedido de Análise já existente na Tabela");
-					if (exists == false){
-						analises.add(cmbAnalisePedidas.getSelectedItem().toString());
+					if (exists == false) {
+						analises.add(cmbAnalisePedidas.getSelectedItem()
+								.toString());
 						modelo.addRow(cmbAnalisePedidas.getSelectedObjects());
 					}
-				}
-				else
-				{
-					JOptionPane.showMessageDialog(Janela_1.this, "Escolha no minino uma Analise antes de adicionar a lista!");
+				} else {
+					JOptionPane
+							.showMessageDialog(Janela_1.this,
+									"Escolha no minino uma Analise antes de adicionar a lista!");
 				}
 			}
 		});
-		
+
 		JButton btnRemover = new JButton("Remover");
 		btnRemover.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			    DefaultTableModel dtm = (DefaultTableModel)tblAnalises.getModel();  
-	            if (tblAnalises.getSelectedRow() >= 0){  
-	            	for (int i = 0; i < analises.size(); i++) {
-						if(tblAnalises.getValueAt(tblAnalises.getSelectedRow(), 0).equals(analises.get(i)))
-						{
+				DefaultTableModel dtm = (DefaultTableModel) tblAnalises
+						.getModel();
+				if (tblAnalises.getSelectedRow() >= 0) {
+					for (int i = 0; i < analises.size(); i++) {
+						if (tblAnalises.getValueAt(
+								tblAnalises.getSelectedRow(), 0).equals(
+								analises.get(i))) {
 							analises.remove(i);
-							
+
 						}
 					}
-	                dtm.removeRow(tblAnalises.getSelectedRow());  
-	                tblAnalises.setModel(dtm);  
-	                
-	                
-	            }else{  
-	                JOptionPane.showMessageDialog(null, "Favor selecionar uma linha");  
-	            }  
+					dtm.removeRow(tblAnalises.getSelectedRow());
+					tblAnalises.setModel(dtm);
+
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"Favor selecionar uma linha");
+				}
 			}
 		});
 		btnRemover.setFont(new Font("Consolas", Font.PLAIN, 12));
@@ -659,22 +882,15 @@ public class Janela_1 extends JFrame {
 		btnInserir.setBackground(Color.WHITE);
 		btnInserir.setBounds(584, 159, 75, 40);
 		panel_2.add(btnInserir);
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(359, 206, 382, 122);
 		panel_2.add(scrollPane);
 
 		tblAnalises = new JTable();
-		tblAnalises.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"An\u00E1lises Pedidas"
-			}
-		) {
-			boolean[] columnEditables = new boolean[] {
-				false
-			};
+		tblAnalises.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { "An\u00E1lises Pedidas" }) {
+			boolean[] columnEditables = new boolean[] { false };
+
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
 			}
@@ -697,6 +913,7 @@ public class Janela_1 extends JFrame {
 
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				txtnumProcesso.setText(null);
 				txtNome.setText(null);
 				txtMorada.setText(null);
@@ -705,7 +922,10 @@ public class Janela_1 extends JFrame {
 				txtContactoAcompanhante.setText(null);
 				cmbIdade.setSelectedIndex(0);
 				cmbCidade.setSelectedIndex(0);
-				buttonGroup.setSelected(null, false);
+				txtData.setDate(null);
+				rbtFemin.setSelected(false);
+				rbtMasc.setSelected(false);
+				rdbtnInvisivel.setSelected(true);
 			}
 		});
 
@@ -714,18 +934,13 @@ public class Janela_1 extends JFrame {
 				cmbIsencao.setSelectedIndex(0);
 				cmbProveniencia.setSelectedIndex(0);
 				cmbAnalisePedidas.setSelectedIndex(0);
-				txtNRAnalises.setText(null);
 				tblAnalises.setModel(new DefaultTableModel(new Object[][] {
-
 				}, new String[] { "An\u00E1lises Pedidas" }));
 			}
 		});
-		
-		txtNome.setFocusable(true);
+
 		setLocation(point.findScreenCenter(this));
+
 	}
-	
-	
-	
 
 }
