@@ -335,15 +335,7 @@ public class Janela_1 extends JFrame {
 					// Do some important stuff depending on wether value was
 					// changed by user
 					if (isDateSelectedByUser) {
-						JOptionPane.showMessageDialog(null, "Funcionou");
-						try {
-							int diass = Data.getDaysOfInterval("08/11/2013",
-									point.FormatDataAtual(new Date()));
-							JOptionPane.showMessageDialog(null, diass);
-						} catch (ParseException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+					
 						try {
 
 							int anos = Validacao.calculoAnos(txtData);
